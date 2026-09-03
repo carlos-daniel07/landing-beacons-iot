@@ -1,0 +1,199 @@
+---
+import "../styles/global.css";
+import Scene from "../components/Scene";
+import PreloaderWrapper from "../components/PreloaderWrapper";
+---
+
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Beacons IoT Technologies</title>
+  </head>
+  <body
+    class="m-0 p-0 bg-[#05070a] text-white selection:bg-blue-500 selection:text-white"
+  >
+    <div class="fixed inset-0 z-0 pointer-events-none">
+      <Scene client:load />
+    </div>
+
+    <header
+      class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-30 pointer-events-none"
+    >
+      <div class="pointer-events-auto">
+        <img
+          src="/Logo.png"
+          alt="BiT Logo"
+          class="h-10 w-auto drop-shadow-md"
+        />
+      </div>
+      <nav
+        class="hidden md:flex space-x-8 text-sm font-medium text-gray-300 pointer-events-auto"
+      >
+        <a href="#soluciones" class="hover:text-blue-400 transition-colors"
+          >Soluciones</a
+        >
+        <a href="#hardware" class="hover:text-blue-400 transition-colors"
+          >Hardware</a
+        >
+        <a href="#contacto" class="hover:text-blue-400 transition-colors"
+          >Contacto</a
+        >
+      </nav>
+    </header>
+
+    <main class="relative z-10 w-full">
+      <section
+        class="h-dvh w-full flex flex-col justify-center items-start px-10 sm:px-24 pointer-events-none"
+      >
+        <div class="max-w-2xl pointer-events-auto">
+          <h1
+            class="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6"
+          >
+            Inteligencia en <br />
+            <span
+              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
+              >Movimiento.</span
+            >
+          </h1>
+          <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
+            Revolucionamos la visibilidad de tus activos físicos. Hardware IoT
+            de grado industrial y ecosistemas de rastreo en tiempo real.
+          </p>
+        </div>
+      </section>
+
+      <section id="enlace-azul-section" class="h-[300vh] w-full relative">
+        <div
+          class="sticky top-0 h-dvh w-full overflow-hidden flex items-center justify-center bg-[#05070a]"
+        >
+          <canvas
+            id="hero-canvas"
+            class="absolute inset-0 w-full h-full object-cover opacity-80"
+          ></canvas>
+
+          <div
+            class="absolute inset-0 bg-gradient-to-r from-[#05070a] via-transparent to-[#05070a] opacity-80 pointer-events-none"
+          >
+          </div>
+
+          <div
+            class="absolute inset-0 z-20 flex flex-col justify-center px-10 sm:px-24 pointer-events-none"
+          >
+            <div class="max-w-lg">
+              <span
+                class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-2 block"
+                >Tecnología de rastreo</span
+              >
+              <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+                Enlace Azul
+              </h2>
+              <p class="text-lg text-gray-300 leading-relaxed">
+                Cada activo emite una señal cifrada que es capturada de forma
+                instantánea por nuestras puertas de enlace corporativas,
+                enviando analítica precisa directo a la nube.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section
+        class="h-dvh w-full flex flex-col justify-center items-start px-10 sm:px-24 bg-[#05070a] relative z-20"
+      >
+        <div
+          class="max-w-md pointer-events-auto bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10"
+        >
+          <h2 class="text-4xl font-bold text-purple-400 mb-4">BeaconNAV</h2>
+          <p class="text-lg text-gray-300">
+            Marketing de proximidad y notificaciones push inteligentes directo
+            al dispositivo del usuario.
+          </p>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      window.addEventListener("DOMContentLoaded", () => {
+        const section = document.getElementById("enlace-azul-section");
+        const canvas = document.getElementById(
+          "hero-canvas",
+        ) as HTMLCanvasElement;
+
+        if (!section || !canvas) return;
+
+        const context = canvas.getContext("2d");
+        const frameCount = 40; // Ajusta este número según la cantidad de imágenes que exportes (ej. 60 o 90)
+        const images: HTMLImageElement[] = [];
+        let framesLoaded = 0;
+
+        // Función adaptada a los nombres exactos que te dio Ezgif
+        const currentFrame = (index: number) => {
+          const paddedIndex = String(index).padStart(3, "0");
+          return `/frames/ezgif-frame-${paddedIndex}.png`;
+        };
+
+        // Precarga silenciosa de los fotogramas en memoria
+        for (let i = 1; i <= frameCount; i++) {
+          const img = new Image();
+          img.src = currentFrame(i);
+          img.onload = () => {
+            framesLoaded++;
+            if (framesLoaded === 1) {
+              render(1); // Dibuja el primer frame apenas cargue el primero
+            }
+          };
+          images.push(img);
+        }
+
+        function render(index: number) {
+          if (!context || !images[index - 1]) return;
+
+          // Ajustar resolución interna del canvas al tamaño de la pantalla
+          canvas.width = window.innerWidth;
+          canvas.height = window.innerHeight;
+
+          const img = images[index - 1];
+
+          // Propiedades para escalar el fotograma tipo 'cover' sin deformar
+          const hRatio = canvas.width / img.width;
+          const vRatio = canvas.height / img.height;
+          const ratio = Math.max(hRatio, vRatio);
+          const centerShiftX = (canvas.width - img.width * ratio) / 2;
+          const centerShiftY = (canvas.height - img.height * ratio) / 2;
+
+          context.clearRect(0, 0, canvas.width, canvas.height);
+          context.drawImage(
+            img,
+            0,
+            0,
+            img.width,
+            img.height,
+            centerShiftX,
+            centerShiftY,
+            img.width * ratio,
+            img.height * ratio,
+          );
+        }
+
+        // Control por scroll nativo ultra fluido
+        window.addEventListener("scroll", () => {
+          const rect = section.getBoundingClientRect();
+          const sectionHeight = section.offsetHeight - window.innerHeight;
+          const scrolled = -rect.top;
+
+          if (scrolled >= 0 && scrolled <= sectionHeight) {
+            const progress = scrolled / sectionHeight;
+            const frameIndex = Math.min(
+              frameCount,
+              Math.max(1, Math.floor(progress * frameCount) + 1),
+            );
+
+            requestAnimationFrame(() => render(frameIndex));
+          }
+        });
+      });
+    </script>
+  </body>
+</html>

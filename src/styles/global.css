@@ -1,0 +1,19 @@
+@import "tailwindcss";
+
+/* Opcional: asegurarnos de que el body no tenga márgenes raros */
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
