@@ -127,6 +127,26 @@ function ScrollAnimationManager() {
   );
 }
 
+// Controlador de Cámara Interactivo (Parallax)
+function CameraRig() {
+  useFrame((state) => {
+    const mouseX = state.mouse.x * 0.3;
+    const mouseY = state.mouse.y * 0.3;
+    state.camera.position.x = THREE.MathUtils.lerp(
+      state.camera.position.x,
+      mouseX,
+      0.05,
+    );
+    state.camera.position.y = THREE.MathUtils.lerp(
+      state.camera.position.y,
+      mouseY,
+      0.05,
+    );
+    state.camera.lookAt(0, 0, 0);
+  });
+  return null;
+}
+
 export default function Scene() {
   return (
     <div className="w-full h-dvh relative z-0">
@@ -143,6 +163,8 @@ export default function Scene() {
           intensity={1}
           color="#0077ff"
         />
+
+        <CameraRig />
 
         <ScrollAnimationManager />
       </Canvas>

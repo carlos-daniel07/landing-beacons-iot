@@ -1,7 +1,8 @@
 ---
 import "../styles/global.css";
 import Scene from "../components/Scene";
-import PreloaderWrapper from "../components/PreloaderWrapper";
+// Si usas el PreloaderWrapper en algún momento, aquí está el import:
+// import PreloaderWrapper from "../components/PreloaderWrapper";
 ---
 
 <html lang="es">
@@ -64,135 +65,400 @@ import PreloaderWrapper from "../components/PreloaderWrapper";
         </div>
       </section>
 
-      <section id="enlace-azul-section" class="h-[300vh] w-full relative">
+      <section id="enlace-azul-section" class="h-[200vh] w-full relative z-20">
         <div
-          class="sticky top-0 h-dvh w-full overflow-hidden flex items-center justify-center bg-[#05070a]"
+          class="sticky top-0 h-dvh w-full overflow-hidden flex flex-col md:flex-row items-center justify-around px-10 sm:px-24 bg-[#05070a]"
         >
-          <canvas
-            id="hero-canvas"
-            class="absolute inset-0 w-full h-full object-cover opacity-80"
-          ></canvas>
-
-          <div
-            class="absolute inset-0 bg-gradient-to-r from-[#05070a] via-transparent to-[#05070a] opacity-80 pointer-events-none"
-          >
+          <div class="max-w-md pointer-events-auto z-20">
+            <span
+              class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-2 block"
+              >Tecnología de rastreo</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+              Enlace Azul
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+              Cada activo emite una señal cifrada que es capturada de forma
+              instantánea por nuestras puertas de enlace corporativas, enviando
+              analítica precisa directo a la nube.
+            </p>
           </div>
 
           <div
-            class="absolute inset-0 z-20 flex flex-col justify-center px-10 sm:px-24 pointer-events-none"
+            class="relative w-[350px] h-[500px] border border-gray-800/80 rounded-3xl bg-[#0a0a0f] p-6 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex-shrink-0"
           >
-            <div class="max-w-lg">
-              <span
-                class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-2 block"
-                >Tecnología de rastreo</span
+            <div
+              id="ea-cloud"
+              class="w-full bg-gray-900/80 border border-blue-500/30 rounded-xl p-4 z-10 shadow-[0_0_15px_rgba(59,130,246,0.15)]"
+            >
+              <div class="flex justify-between items-center mb-3">
+                <span
+                  class="text-[10px] text-gray-400 uppercase font-bold tracking-wider"
+                  >Dashboard IoT</span
+                >
+                <div class="flex items-center gap-1.5">
+                  <span class="text-[8px] text-green-400 animate-pulse"
+                    >EN LÍNEA</span
+                  >
+                  <div
+                    class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_#22c55e]"
+                  >
+                  </div>
+                </div>
+              </div>
+
+              <div
+                class="bg-black/60 rounded-lg p-3 border border-gray-700/50 font-mono text-[10px] space-y-2"
               >
-              <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
-                Enlace Azul
-              </h2>
-              <p class="text-lg text-gray-300 leading-relaxed">
-                Cada activo emite una señal cifrada que es capturada de forma
-                instantánea por nuestras puertas de enlace corporativas,
-                enviando analítica precisa directo a la nube.
-              </p>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-500">ID Activo:</span>
+                  <span
+                    class="text-gray-200 font-bold bg-gray-800 px-1.5 py-0.5 rounded"
+                    >S8-8902</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-500">Zona Actual:</span>
+                  <span
+                    id="ea-zona"
+                    class="text-blue-400 font-bold transition-colors"
+                    >Almacenamiento</span
+                  >
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-500">Distancia a GW:</span>
+                  <span class="text-white font-bold"
+                    ><span id="ea-distancia" class="text-lg text-blue-400"
+                      >15.0</span
+                    > m</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div
+              class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-gray-800 -translate-x-1/2 overflow-hidden"
+            >
+              <div
+                id="ea-signal-up"
+                class="w-full h-20 bg-gradient-to-t from-transparent via-blue-400 to-transparent absolute shadow-[0_0_12px_#60a5fa] opacity-0 -translate-y-full"
+              >
+              </div>
+            </div>
+
+            <div
+              class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
+            >
+              <div
+                id="ea-gateway"
+                class="w-14 h-14 bg-gray-800/80 backdrop-blur border border-gray-600 rounded-lg flex items-center justify-center shadow-lg transition-colors"
+              >
+                <div class="w-6 h-6 border-2 border-gray-500 rounded-md"></div>
+              </div>
+              <span
+                class="absolute -right-20 top-4 text-[9px] text-gray-500 uppercase font-mono"
+                >Gateway KG01</span
+              >
+            </div>
+
+            <div
+              class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-gray-800 -translate-x-1/2 overflow-hidden"
+            >
+              <div
+                id="ea-signal-down"
+                class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute shadow-[0_0_12px_#3b82f6] opacity-0 -translate-y-full"
+              >
+              </div>
+            </div>
+
+            <div
+              class="w-full h-16 border-t border-dashed border-gray-700/50 mt-auto relative flex items-center"
+            >
+              <span
+                class="absolute -top-5 left-0 text-[9px] text-gray-600 uppercase font-mono"
+                >Línea de Producción</span
+              >
+
+              <div
+                id="ea-asset"
+                class="absolute left-0 w-24 h-10 bg-gray-800/50 border border-gray-700 rounded-lg flex items-center justify-between px-2"
+              >
+                <span class="text-[10px] text-gray-400 font-bold">Activo</span>
+                <div
+                  id="ea-asset-beacon"
+                  class="w-3 h-3 bg-blue-900/50 border border-blue-500/50 rounded-full flex items-center justify-center"
+                >
+                  <div class="w-1 h-1 bg-blue-400 rounded-full"></div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
       </section>
 
       <section
-        class="h-dvh w-full flex flex-col justify-center items-start px-10 sm:px-24 bg-[#05070a] relative z-20"
+        id="beaconnav-section"
+        class="min-h-dvh w-full relative z-20 bg-[#05070a] flex items-center py-20"
       >
         <div
-          class="max-w-md pointer-events-auto bg-black/40 backdrop-blur-md p-8 rounded-2xl border border-white/10"
+          class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-around px-10 sm:px-24 gap-12"
         >
-          <h2 class="text-4xl font-bold text-purple-400 mb-4">BeaconNAV</h2>
-          <p class="text-lg text-gray-300">
-            Marketing de proximidad y notificaciones push inteligentes directo
-            al dispositivo del usuario.
-          </p>
+          <div class="max-w-md pointer-events-auto z-20">
+            <span
+              class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-2 block"
+              >Marketing Inteligente</span
+            >
+            <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+              BeaconNAV
+            </h2>
+            <p class="text-lg text-gray-300 leading-relaxed mb-8">
+              Llega al cliente en el momento exacto. Nuestras campañas de
+              proximidad envían notificaciones push directamente al smartphone
+              cuando el usuario entra en el radio del sensor.
+            </p>
+          </div>
+
+          <div
+            class="relative w-[300px] h-[600px] border-[8px] border-gray-800 rounded-[3rem] bg-[#0a0a0f] shadow-2xl flex flex-col items-center justify-start overflow-hidden flex-shrink-0"
+          >
+            <div
+              class="w-28 h-7 bg-black rounded-b-3xl absolute top-0 z-30 shadow-sm"
+            >
+            </div>
+
+            <div class="absolute inset-0 p-5 pt-16 flex flex-col gap-3">
+              <div class="w-full flex justify-between items-center px-1 mb-2">
+                <div
+                  class="w-32 h-6 bg-gray-800/60 rounded-full border border-gray-700/50 flex items-center px-3"
+                >
+                  <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+                </div>
+                <div
+                  class="w-8 h-8 rounded-full bg-gray-800/60 border border-gray-700/50"
+                >
+                </div>
+              </div>
+
+              <div class="flex gap-3 h-24">
+                <div
+                  class="flex-[1.5] bg-gray-800/30 rounded-2xl border border-gray-700/30 flex items-center justify-center"
+                >
+                  <span class="text-[8px] text-gray-600 uppercase font-bold"
+                    >Local 1</span
+                  >
+                </div>
+                <div
+                  class="flex-1 bg-gray-800/30 rounded-2xl border border-gray-700/30"
+                >
+                </div>
+              </div>
+
+              <div
+                class="w-full h-8 flex items-center justify-center opacity-40 my-1"
+              >
+                <div
+                  class="w-full h-[2px] border-t-2 border-dashed border-gray-600"
+                >
+                </div>
+                <span
+                  class="absolute text-[9px] bg-[#0a0a0f] px-2 text-gray-500 tracking-widest uppercase"
+                  >Pasillo Principal</span
+                >
+              </div>
+
+              <div class="flex gap-3 h-36">
+                <div
+                  class="flex-1 bg-gray-800/30 rounded-2xl border border-gray-700/30"
+                >
+                </div>
+
+                <div
+                  class="flex-[1.2] bg-purple-900/10 rounded-2xl border border-purple-500/20 relative flex items-center justify-center"
+                >
+                  <div
+                    id="proximity-radar"
+                    class="absolute inset-0 flex items-center justify-center opacity-0 scale-50 z-10"
+                  >
+                    <div
+                      class="w-28 h-28 border-[1.5px] border-purple-500/40 rounded-full animate-ping absolute"
+                    >
+                    </div>
+                    <div
+                      class="w-16 h-16 border-[1.5px] border-purple-400/60 rounded-full animate-ping absolute"
+                      style="animation-delay: 0.2s;"
+                    >
+                    </div>
+                    <div
+                      class="w-6 h-6 rounded-full flex items-center justify-center bg-purple-600 shadow-[0_0_15px_rgba(168,85,247,0.6)]"
+                    >
+                      <div class="w-2 h-2 bg-white rounded-full"></div>
+                    </div>
+                  </div>
+                  <span
+                    class="absolute bottom-2 right-2 text-[8px] font-bold text-purple-400/60 uppercase tracking-widest"
+                    >Tu Tienda</span
+                  >
+                </div>
+              </div>
+
+              <div
+                class="w-full flex-1 bg-gray-800/30 rounded-t-3xl border border-gray-700/30 mt-3 flex items-start justify-center pt-3"
+              >
+                <span class="text-[8px] text-gray-600 uppercase font-bold"
+                  >Entrada Sur</span
+                >
+              </div>
+            </div>
+
+            <div
+              id="push-notification"
+              class="w-[90%] bg-black/70 backdrop-blur-xl border border-gray-700 p-4 rounded-2xl absolute top-12 -translate-y-[200%] z-20 flex items-center space-x-4 shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
+            >
+              <div
+                class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-xl flex-shrink-0 flex items-center justify-center text-white font-bold text-[11px] shadow-md"
+              >
+                BiT
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-[13px] leading-tight">
+                  ¡Bienvenido a la Tienda!
+                </h4>
+                <p class="text-gray-300 text-[11px] mt-1 leading-tight">
+                  Tienes un 20% de descuento en periféricos hoy. Toca para ver.
+                </p>
+              </div>
+            </div>
+          </div>
         </div>
       </section>
     </main>
 
     <script>
+      import gsap from "gsap";
+      import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+      gsap.registerPlugin(ScrollTrigger);
+
       window.addEventListener("DOMContentLoaded", () => {
-        const section = document.getElementById("enlace-azul-section");
-        const canvas = document.getElementById(
-          "hero-canvas",
-        ) as HTMLCanvasElement;
+        // =============================================
+        // 1. ANIMACIÓN ENLACE AZUL (Scrollytelling UI)
+        // =============================================
+        const telemetria = { distancia: 15.0 };
+        const textoDistancia = document.getElementById("ea-distancia");
+        const textoZona = document.getElementById("ea-zona");
 
-        if (!section || !canvas) return;
-
-        const context = canvas.getContext("2d");
-        const frameCount = 40; // Ajusta este número según la cantidad de imágenes que exportes (ej. 60 o 90)
-        const images: HTMLImageElement[] = [];
-        let framesLoaded = 0;
-
-        // Función adaptada a los nombres exactos que te dio Ezgif
-        const currentFrame = (index: number) => {
-          const paddedIndex = String(index).padStart(3, "0");
-          return `/frames/ezgif-frame-${paddedIndex}.png`;
-        };
-
-        // Precarga silenciosa de los fotogramas en memoria
-        for (let i = 1; i <= frameCount; i++) {
-          const img = new Image();
-          img.src = currentFrame(i);
-          img.onload = () => {
-            framesLoaded++;
-            if (framesLoaded === 1) {
-              render(1); // Dibuja el primer frame apenas cargue el primero
-            }
-          };
-          images.push(img);
-        }
-
-        function render(index: number) {
-          if (!context || !images[index - 1]) return;
-
-          // Ajustar resolución interna del canvas al tamaño de la pantalla
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-
-          const img = images[index - 1];
-
-          // Propiedades para escalar el fotograma tipo 'cover' sin deformar
-          const hRatio = canvas.width / img.width;
-          const vRatio = canvas.height / img.height;
-          const ratio = Math.max(hRatio, vRatio);
-          const centerShiftX = (canvas.width - img.width * ratio) / 2;
-          const centerShiftY = (canvas.height - img.height * ratio) / 2;
-
-          context.clearRect(0, 0, canvas.width, canvas.height);
-          context.drawImage(
-            img,
-            0,
-            0,
-            img.width,
-            img.height,
-            centerShiftX,
-            centerShiftY,
-            img.width * ratio,
-            img.height * ratio,
-          );
-        }
-
-        // Control por scroll nativo ultra fluido
-        window.addEventListener("scroll", () => {
-          const rect = section.getBoundingClientRect();
-          const sectionHeight = section.offsetHeight - window.innerHeight;
-          const scrolled = -rect.top;
-
-          if (scrolled >= 0 && scrolled <= sectionHeight) {
-            const progress = scrolled / sectionHeight;
-            const frameIndex = Math.min(
-              frameCount,
-              Math.max(1, Math.floor(progress * frameCount) + 1),
-            );
-
-            requestAnimationFrame(() => render(frameIndex));
-          }
+        const tlEnlace = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#enlace-azul-section",
+            start: "top top",
+            end: "bottom bottom",
+            scrub: 1,
+          },
         });
+
+        tlEnlace
+          // Físico + Telemetría
+          .to(
+            "#ea-asset",
+            { left: "calc(50% - 3rem)", duration: 2, ease: "none" },
+            "sincronizado",
+          )
+          .to(
+            telemetria,
+            {
+              distancia: 2.1,
+              duration: 2,
+              ease: "none",
+              onUpdate: () => {
+                if (!textoDistancia || !textoZona) return;
+                textoDistancia.innerText = telemetria.distancia.toFixed(1);
+
+                if (telemetria.distancia > 10) {
+                  textoZona.innerText = "Almacenamiento";
+                  textoZona.className =
+                    "text-blue-400 font-bold transition-colors";
+                  textoDistancia.className =
+                    "text-lg text-blue-400 transition-colors";
+                } else if (telemetria.distancia > 5) {
+                  textoZona.innerText = "Pasillo de Tránsito";
+                  textoZona.className =
+                    "text-purple-400 font-bold transition-colors";
+                  textoDistancia.className =
+                    "text-lg text-purple-400 transition-colors";
+                } else {
+                  textoZona.innerText = "Bahía de Carga";
+                  textoZona.className =
+                    "text-green-400 font-bold transition-colors";
+                  textoDistancia.className =
+                    "text-lg text-green-400 transition-colors";
+                }
+              },
+            },
+            "sincronizado",
+          )
+
+          // Parpadeo del Beacon en el Activo
+          .to(
+            "#ea-asset-beacon",
+            {
+              backgroundColor: "#3b82f6",
+              boxShadow: "0 0 10px #3b82f6",
+              duration: 0.2,
+              repeat: 10,
+              yoyo: true,
+            },
+            "sincronizado",
+          )
+
+          // LA LUCECITA VIAJERA 1 (Activo a Gateway)
+          .fromTo(
+            "#ea-signal-down",
+            { top: "100%", opacity: 1 },
+            { top: "-50%", opacity: 1, duration: 0.6, repeat: 2, ease: "none" },
+            "sincronizado",
+          )
+
+          // EL GATEWAY REACCIONA
+          .to(
+            "#ea-gateway",
+            {
+              borderColor: "#60a5fa",
+              backgroundColor: "rgba(30, 58, 138, 0.5)",
+              duration: 0.2,
+              repeat: 9,
+              yoyo: true,
+            },
+            "sincronizado",
+          )
+
+          // LA LUCECITA VIAJERA 2 (Gateway a Nube)
+          .fromTo(
+            "#ea-signal-up",
+            { top: "100%", opacity: 1 },
+            { top: "-50%", opacity: 1, duration: 0.6, repeat: 2, ease: "none" },
+            "sincronizado+=0.2",
+          )
+
+          .to({}, { duration: 0.3 }); // Pausa final
+
+        // =============================================
+        // 2. ANIMACIÓN BEACONNAV (Automática)
+        // =============================================
+        const tlBeacon = gsap.timeline({
+          scrollTrigger: {
+            trigger: "#beaconnav-section",
+            start: "top center",
+            toggleActions: "play none none reverse",
+          },
+        });
+
+        tlBeacon
+          .to("#proximity-radar", { opacity: 1, scale: 1, duration: 0.8 })
+          .to("#push-notification", {
+            y: 0,
+            duration: 1.2,
+            ease: "back.out(1.7)",
+          });
       });
     </script>
   </body>
