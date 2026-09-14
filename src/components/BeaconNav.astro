@@ -1,0 +1,156 @@
+<section
+  id="beaconnav-section"
+  class="min-h-dvh w-full relative z-20 bg-[#05070a] flex items-center py-20"
+>
+  <div
+    class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-around px-10 sm:px-24 gap-12"
+  >
+    <div class="max-w-md pointer-events-auto z-20">
+      <span
+        class="text-purple-400 font-mono text-sm tracking-widest uppercase mb-2 block"
+        >Marketing Inteligente</span
+      >
+      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">BeaconNAV</h2>
+      <p class="text-lg text-gray-300 leading-relaxed mb-8">
+        Llega al cliente en el momento exacto. Nuestras campañas de proximidad
+        envían notificaciones push directamente al smartphone cuando el usuario
+        entra en el radio del sensor.
+      </p>
+    </div>
+
+    <div
+      class="relative w-[300px] h-[600px] border-[8px] border-gray-800 rounded-[3rem] bg-[#0a0a0f] shadow-2xl flex flex-col items-center justify-start overflow-hidden flex-shrink-0"
+    >
+      <div
+        class="w-28 h-7 bg-black rounded-b-3xl absolute top-0 z-30 shadow-sm"
+      >
+      </div>
+
+      <div class="absolute inset-0 p-5 pt-16 flex flex-col gap-3">
+        <div class="w-full flex justify-between items-center px-1 mb-2">
+          <div
+            class="w-32 h-6 bg-gray-800/60 rounded-full border border-gray-700/50 flex items-center px-3"
+          >
+            <div class="w-2 h-2 rounded-full bg-gray-600"></div>
+          </div>
+          <div
+            class="w-8 h-8 rounded-full bg-gray-800/60 border border-gray-700/50"
+          >
+          </div>
+        </div>
+
+        <div class="flex gap-3 h-24">
+          <div
+            class="flex-[1.5] bg-gray-800/30 rounded-2xl border border-gray-700/30 flex items-center justify-center"
+          >
+            <span class="text-[8px] text-gray-600 uppercase font-bold"
+              >Local 1</span
+            >
+          </div>
+          <div
+            class="flex-1 bg-gray-800/30 rounded-2xl border border-gray-700/30"
+          >
+          </div>
+        </div>
+
+        <div
+          class="w-full h-8 flex items-center justify-center opacity-40 my-1"
+        >
+          <div class="w-full h-[2px] border-t-2 border-dashed border-gray-600">
+          </div>
+          <span
+            class="absolute text-[9px] bg-[#0a0a0f] px-2 text-gray-500 tracking-widest uppercase"
+            >Pasillo Principal</span
+          >
+        </div>
+
+        <div class="flex gap-3 h-36">
+          <div
+            class="flex-1 bg-gray-800/30 rounded-2xl border border-gray-700/30"
+          >
+          </div>
+
+          <div
+            class="flex-[1.2] bg-purple-900/10 rounded-2xl border border-purple-500/20 relative flex items-center justify-center"
+          >
+            <div
+              id="proximity-radar"
+              class="absolute inset-0 flex items-center justify-center opacity-0 scale-50 z-10"
+            >
+              <div
+                class="w-28 h-28 border-[1.5px] border-purple-500/40 rounded-full animate-ping absolute"
+              >
+              </div>
+              <div
+                class="w-16 h-16 border-[1.5px] border-purple-400/60 rounded-full animate-ping absolute"
+                style="animation-delay: 0.2s;"
+              >
+              </div>
+              <div
+                class="w-6 h-6 rounded-full flex items-center justify-center bg-purple-600 shadow-[0_0_15px_rgba(168,85,247,0.6)]"
+              >
+                <div class="w-2 h-2 bg-white rounded-full"></div>
+              </div>
+            </div>
+            <span
+              class="absolute bottom-2 right-2 text-[8px] font-bold text-purple-400/60 uppercase tracking-widest"
+              >Tu Tienda</span
+            >
+          </div>
+        </div>
+
+        <div
+          class="w-full flex-1 bg-gray-800/30 rounded-t-3xl border border-gray-700/30 mt-3 flex items-start justify-center pt-3"
+        >
+          <span class="text-[8px] text-gray-600 uppercase font-bold"
+            >Entrada Sur</span
+          >
+        </div>
+      </div>
+
+      <div
+        id="push-notification"
+        class="w-[90%] bg-black/70 backdrop-blur-xl border border-gray-700 p-4 rounded-2xl absolute top-12 -translate-y-[200%] z-20 flex items-center space-x-4 shadow-[0_10px_40px_rgba(0,0,0,0.8)]"
+      >
+        <div
+          class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-xl flex-shrink-0 flex items-center justify-center text-white font-bold text-[11px] shadow-md"
+        >
+          BiT
+        </div>
+        <div>
+          <h4 class="text-white font-bold text-[13px] leading-tight">
+            ¡Bienvenido a la Tienda!
+          </h4>
+          <p class="text-gray-300 text-[11px] mt-1 leading-tight">
+            Tienes un 20% de descuento en periféricos hoy. Toca para ver.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from "gsap";
+  import { ScrollTrigger } from "gsap/ScrollTrigger";
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  document.addEventListener("DOMContentLoaded", () => {
+    const tlBeacon = gsap.timeline({
+      scrollTrigger: {
+        trigger: "#beaconnav-section",
+        start: "top center",
+        toggleActions: "play none none reverse",
+      },
+    });
+
+    tlBeacon
+      .to("#proximity-radar", { opacity: 1, scale: 1, duration: 0.8 })
+      .to("#push-notification", {
+        y: 0,
+        duration: 1.2,
+        ease: "back.out(1.7)",
+      });
+  });
+</script>
