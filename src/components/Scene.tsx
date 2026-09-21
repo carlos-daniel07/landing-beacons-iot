@@ -1,6 +1,13 @@
 import { useRef, useLayoutEffect } from "react";
 import { Canvas, useFrame } from "@react-three/fiber";
-import { RoundedBox, Float, Image } from "@react-three/drei";
+// IMPORTANTE: Agregamos Environment y ContactShadows para el look premium
+import {
+  RoundedBox,
+  Float,
+  Image,
+  Environment,
+  ContactShadows,
+} from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
@@ -20,7 +27,7 @@ function TechNetwork() {
       <mesh ref={meshRef}>
         <planeGeometry args={[40, 40, 40, 40]} />
         <meshBasicMaterial
-          color="#0044ff"
+          color="#3b82f6" // Lo cambié a un azul más vivo para que resalte en lo claro
           wireframe
           transparent
           opacity={0.15}
@@ -45,11 +52,11 @@ function BlinkingLED({ position }: { position: [number, number, number] }) {
     <group position={position}>
       <mesh>
         <circleGeometry args={[0.06, 32]} />
-        <meshBasicMaterial color="#0077ff" />
+        <meshBasicMaterial color="#3b82f6" />
       </mesh>
       <mesh ref={ringRef} position={[0, 0, -0.001]}>
         <ringGeometry args={[0.08, 0.1, 32]} />
-        <meshBasicMaterial color="#0077ff" transparent />
+        <meshBasicMaterial color="#3b82f6" transparent />
       </mesh>
     </group>
   );
@@ -60,7 +67,12 @@ function BrandedBeacon() {
   return (
     <group>
       <RoundedBox args={[1.5, 2.2, 0.4]} radius={0.15} smoothness={4}>
-        <meshStandardMaterial color="#ffffff" roughness={0.2} metalness={0.1} />
+        {/* Le subimos un pelito el metalness para que brille con el Environment */}
+        <meshStandardMaterial
+          color="#ffffff"
+          roughness={0.15}
+          metalness={0.15}
+        />
       </RoundedBox>
       <Image
         url="/Logo.png"
@@ -103,11 +115,9 @@ function ScrollAnimationManager() {
         0,
       ); // Rota para lucir imponente
 
-    // PAUSA LARGA: Congelamos el 3D para que el usuario lea las tarjetas HTML tranquilo
+    // PAUSA LARGA: Congelamos el 3D
     tl.to({}, { duration: 3 });
 
-    // SOLUCIÓN AL ERROR DE TYPESCRIPT:
-    // Usamos llaves {} para que la función no retorne el objeto timeline
     return () => {
       tl.kill();
     };
@@ -149,23 +159,40 @@ function CameraRig() {
 
 export default function Scene() {
   return (
-    <div className="w-full h-dvh relative z-0">
-      <Canvas camera={{ position: [0, 0, 6], fov: 45 }}>
-        <color attach="background" args={["#05070a"]} />
-        <ambientLight intensity={0.5} />
-        <directionalLight
-          position={[5, 10, 5]}
-          intensity={1.5}
-          color="#ffffff"
-        />
+    /* 1. EL FONDO HTML CLARO CON MANCHAS AZULES */
+    <div className="w-full h-dvh relative z-0 bg-slate-50 overflow-hidden">
+      {/* Mancha azul 1 (Arriba a la derecha) - Usamos w-[600px] o w-150 si tu Tailwind lo soporta */}
+      <div className="absolute top-[-10%] right-[-10%] w-[600px] h-[600px] bg-blue-400/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+      {/* Mancha azul 2 (Abajo a la izquierda) - Corregido el aviso amarillo usando clases nativas w-125 h-125 */}
+      <div className="absolute bottom-[-10%] left-[-10%] w-125 h-125 bg-cyan-400/20 blur-[120px] rounded-full pointer-events-none"></div>
+
+      {/* 2. EL CANVAS AHORA ES TRANSPARENTE CORRECTAMENTE (gl={{ alpha: true }}) */}
+      <Canvas camera={{ position: [0, 0, 6], fov: 45 }} gl={{ alpha: true }}>
+        {/* Luces ajustadas para Tema Claro */}
+        <ambientLight intensity={0.8} />
+        <directionalLight position={[5, 10, 5]} intensity={2} color="#ffffff" />
+        {/* Luz de rebote azul suave */}
         <directionalLight
           position={[-5, -10, -5]}
-          intensity={1}
-          color="#0077ff"
+          intensity={1.5}
+          color="#93c5fd"
+        />
+
+        {/* 3. REFLEJOS REALISTAS */}
+        <Environment preset="city" />
+
+        {/* 4. SOMBRA EN EL PISO */}
+        <ContactShadows
+          position={[0, -2, 0]}
+          opacity={0.3}
+          scale={15}
+          blur={2.5}
+          far={4}
+          color="#1e293b"
         />
 
         <CameraRig />
-
         <ScrollAnimationManager />
       </Canvas>
     </div>

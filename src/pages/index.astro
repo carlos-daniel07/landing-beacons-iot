@@ -4,6 +4,8 @@ import Scene from "../components/Scene";
 import BlueLink from "../components/BlueLink.astro";
 import BeaconNav from "../components/BeaconNav.astro";
 import Preloader from "../components/Preloader.astro";
+import Hardware from "../components/Hardware.astro";
+import Header from "../components/Header.astro";
 ---
 
 <html lang="es">
@@ -13,62 +15,48 @@ import Preloader from "../components/Preloader.astro";
     <meta name="viewport" content="width=device-width" />
     <title>Beacons IoT Technologies</title>
   </head>
+
   <body
-    class="m-0 p-0 bg-[#05070a] text-white selection:bg-blue-500 selection:text-white"
+    class="m-0 p-0 bg-slate-50 text-slate-900 selection:bg-blue-500 selection:text-white"
   >
-    <Preloader />
     <div class="fixed inset-0 z-0 pointer-events-none">
       <Scene client:load />
     </div>
 
-    <header
-      class="fixed top-0 left-0 w-full p-6 flex justify-between items-center z-30 pointer-events-none"
-    >
-      <div class="pointer-events-auto">
-        <img
-          src="/Logo.png"
-          alt="BiT Logo"
-          class="h-10 w-auto drop-shadow-md"
-        />
-      </div>
-      <nav
-        class="hidden md:flex space-x-8 text-sm font-medium text-gray-300 pointer-events-auto"
-      >
-        <a href="#soluciones" class="hover:text-blue-400 transition-colors"
-          >Soluciones</a
-        >
-        <a href="#hardware" class="hover:text-blue-400 transition-colors"
-          >Hardware</a
-        >
-        <a href="#contacto" class="hover:text-blue-400 transition-colors"
-          >Contacto</a
-        >
-      </nav>
-    </header>
+    <Header />
 
     <main class="relative z-10 w-full">
       <section
-        class="h-dvh w-full flex flex-col justify-center items-start px-10 sm:px-24 pointer-events-none"
+        class="h-dvh w-full flex flex-col justify-center items-start px-8 sm:px-16 md:px-24 pointer-events-none"
       >
-        <div class="max-w-2xl pointer-events-auto">
-          <h1
-            class="text-5xl md:text-7xl font-bold tracking-tighter leading-tight mb-6"
+        <div class="max-w-4xl pointer-events-auto">
+          <span
+            class="text-blue-600 font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase mb-5 block"
           >
-            Inteligencia en <br />
-            <span
-              class="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-500"
-              >Movimiento.</span
-            >
+            Tecnología IoT desde Medellín, Colombia
+          </span>
+
+          <h1
+            class="text-5xl md:text-6xl lg:text-[5rem] font-medium text-[#0f172a] tracking-tight leading-[1.05] mb-8"
+          >
+            Soluciones IoT y <br />
+            localización de <br />
+            activos en <br />
+            Colombia.
           </h1>
-          <p class="text-lg text-gray-400 max-w-xl leading-relaxed">
-            Revolucionamos la visibilidad de tus activos físicos. Hardware IoT
-            de grado industrial y ecosistemas de rastreo en tiempo real.
+
+          <p
+            class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed"
+          >
+            Creamos sistemas RTLS de localización en tiempo real, trazabilidad y
+            automatización con tecnología Bluetooth Low Energy.
           </p>
         </div>
       </section>
 
       <BlueLink />
       <BeaconNav />
+      <Hardware />
     </main>
   </body>
 </html>

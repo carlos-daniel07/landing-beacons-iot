@@ -1,0 +1,321 @@
+---
+// src/components/Catalogo.astro
+import Filters from "./Filters.astro";
+import ProductCard from "./ProductCard.astro";
+import ProductModal from "./ProductModal.astro";
+
+const data = {
+  catalog: "activos",
+  productos: [
+    {
+      alcance: "80 meters",
+      bateria: "40mAh; 18 months",
+      capacidades: [
+        "Etiqueta imprimible",
+        "tecnología UHF NFC y BLE",
+        "Alcance de transmisión de hasta 80 m",
+      ],
+      dimensiones: "100mm×150mmx1.5mm",
+      nombre: "Etiqueta imprimible para activos",
+      referencia: "C6",
+      sensores: [],
+      tipo: "Beacon Bluetooth",
+      url_imagen: "/img-1.png",
+    },
+    {
+      alcance: "80 meters",
+      bateria: "40mAh; 18 months",
+      capacidades: [
+        "Espesor aproximado de 1,5 mm",
+        "Peso aproximado de 4 g",
+        "activación mediante UHF NFC",
+      ],
+      dimensiones: "58mm×68mmx1.5mm",
+      nombre: "Etiqueta ultradelgada de papel",
+      referencia: "C5",
+      sensores: [],
+      tipo: "Beacon Bluetooth",
+      url_imagen: "/img-2.png",
+    },
+    {
+      alcance: "100 meters",
+      bateria: "Coin battery; 4 Months",
+      capacidades: [
+        "Peso aproximado de 1,2 g",
+        "protección IP67",
+        "batería CR2032 reemplazable",
+      ],
+      dimensiones: "20*28.8*2.2mm",
+      nombre: "Tag BLE ultracompacto",
+      referencia: "C2",
+      sensores: [],
+      tipo: "Beacon Bluetooth",
+      url_imagen: "/img-3.png",
+    },
+    {
+      alcance: "100 meters",
+      bateria: "CR2032; 210mAh; 16 months",
+      capacidades: [
+        "Uso como llavero o pulsera",
+        "protección IP63",
+        "autonomía indicada de hasta 16 meses",
+      ],
+      dimensiones: "dia 32.2mm*8mm",
+      nombre: "Tag wearable multipropósito",
+      referencia: "W1",
+      sensores: ["Accelerometer", "Battery level", "Temperature"],
+      tipo: "Beacon Bluetooth",
+      url_imagen: "/img-4.png",
+    },
+    // Pega aquí el resto de tus 32 dispositivos...
+  ],
+};
+---
+
+<section
+  id="catalogo-section"
+  class="relative min-h-screen w-full bg-[#f8fafc] z-20 py-24 px-6 md:px-12 lg:px-24"
+>
+  <div class="mb-10 relative z-10 max-w-4xl">
+    <div class="text-slate-400 text-sm mb-6 flex gap-2">
+      <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
+      <span>/</span>
+      <span class="text-slate-600">Catálogo</span>
+    </div>
+
+    <span
+      class="text-blue-600 font-bold text-xs tracking-widest uppercase mb-3 block"
+      >CATÁLOGO BIT</span
+    >
+    <h1
+      class="text-5xl md:text-6xl font-medium text-[#111827] tracking-tight mb-6"
+    >
+      Beacons, sensores y gateways IoT
+    </h1>
+    <p class="text-slate-500 text-lg">
+      Explora beacons BLE, sensores, gateways IoT y dispositivos KKM para
+      localización y monitoreo. Solicita asesoría con BIT en Colombia.
+    </p>
+  </div>
+
+  <!-- Componente de Filtros -->
+  <Filters />
+
+  <div class="mb-6 relative z-10">
+    <span id="results-count" class="text-sm text-slate-500 font-medium"
+      >{data.productos.length} dispositivos encontrados</span
+    >
+  </div>
+
+  <!-- Cuadrícula de Tarjetas -->
+  <div
+    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10"
+  >
+    {data.productos.map((producto) => <ProductCard producto={producto} />)}
+  </div>
+
+  <!-- Componente de Modal -->
+  <ProductModal />
+</section>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const cards = document.querySelectorAll(
+      ".product-card",
+    ) as NodeListOf<HTMLElement>;
+    const searchInput = document.getElementById(
+      "search-input",
+    ) as HTMLInputElement;
+    const categorySelect = document.getElementById(
+      "category-select",
+    ) as HTMLSelectElement;
+    const filterBtns = document.querySelectorAll(".filter-btn");
+    const resultsCount = document.getElementById("results-count");
+
+    // Lógica de Filtros
+    const applyFilters = () => {
+      const searchTerm = searchInput.value.toLowerCase();
+      const selectTerm = categorySelect.value;
+      const activeBtn =
+        document
+          .querySelector(".filter-btn.bg-blue-50")
+          ?.getAttribute("data-filter") || "Todos";
+
+      let count = 0;
+
+      cards.forEach((card) => {
+        const rawData = card.getAttribute("data-producto");
+        if (!rawData) return;
+        const data = JSON.parse(rawData);
+
+        const matchSearch =
+          data.nombre.toLowerCase().includes(searchTerm) ||
+          data.referencia.toLowerCase().includes(searchTerm);
+        const matchSelect = selectTerm === "Todos" || data.tipo === selectTerm;
+        const matchBtn = activeBtn === "Todos" || data.tipo === activeBtn;
+
+        if (matchSearch && matchSelect && matchBtn) {
+          card.style.display = "flex";
+          count++;
+        } else {
+          card.style.display = "none";
+        }
+      });
+
+      if (resultsCount) {
+        resultsCount.innerText = `${count} dispositivo${count !== 1 ? "s" : ""} encontrado${count !== 1 ? "s" : ""}`;
+      }
+    };
+
+    searchInput?.addEventListener("input", applyFilters);
+    categorySelect?.addEventListener("change", applyFilters);
+
+    filterBtns.forEach((btn) => {
+      btn.addEventListener("click", (e) => {
+        const target = e.target as HTMLElement;
+        const filterVal = target.getAttribute("data-filter") || "Todos";
+
+        filterBtns.forEach((b) => {
+          b.classList.remove(
+            "border-blue-600",
+            "text-blue-600",
+            "bg-blue-50",
+            "font-bold",
+          );
+          b.classList.add("border-slate-200", "text-slate-600", "font-medium");
+        });
+
+        target.classList.remove(
+          "border-slate-200",
+          "text-slate-600",
+          "font-medium",
+        );
+        target.classList.add(
+          "border-blue-600",
+          "text-blue-600",
+          "bg-blue-50",
+          "font-bold",
+        );
+
+        if (categorySelect) categorySelect.value = filterVal;
+        applyFilters();
+      });
+    });
+
+    // Lógica del Modal y Relacionados
+    const modal = document.getElementById("simple-modal");
+    const backdrop = document.getElementById("modal-backdrop");
+    const contentBox = document.getElementById("modal-content-box");
+    const btnClose = document.getElementById("close-modal-btn");
+
+    const mImg = document.getElementById("m-img") as HTMLImageElement;
+    const mBadge = document.getElementById("m-badge");
+    const mTitle = document.getElementById("m-title");
+    const mRef = document.getElementById("m-ref");
+    const mRange = document.getElementById("m-range");
+    const mBattery = document.getElementById("m-battery");
+    const mDim = document.getElementById("m-dim");
+    const mFeatures = document.getElementById("m-features");
+
+    const mRelatedSection = document.getElementById("m-related-section");
+    const mRelatedGrid = document.getElementById("m-related-grid");
+
+    const populateModal = (p: any) => {
+      if (mImg) mImg.src = p.url_imagen;
+      if (mBadge)
+        mBadge.innerText =
+          p.tipo === "Beacon Bluetooth"
+            ? "Baliza Bluetooth"
+            : p.tipo || "Hardware IoT";
+      if (mTitle) mTitle.innerText = p.nombre;
+      if (mRef) mRef.innerText = `FABRICANTE: KKM · REFERENCIA ${p.referencia}`;
+      if (mRange) mRange.innerText = p.alcance || "N/A";
+      if (mBattery) mBattery.innerText = p.bateria || "N/A";
+      if (mDim) mDim.innerText = p.dimensiones || "N/A";
+
+      if (mFeatures) {
+        mFeatures.innerHTML = "";
+        if (p.capacidades && p.capacidades.length > 0) {
+          p.capacidades.forEach((cap: string) => {
+            mFeatures.innerHTML += `<li class="flex items-start gap-2"><div class="w-1.5 h-1.5 bg-[#4F46E5] rounded-full flex-shrink-0 mt-1.5"></div>${cap}</li>`;
+          });
+        }
+      }
+
+      if (mRelatedGrid && mRelatedSection) {
+        mRelatedGrid.innerHTML = "";
+        let relatedCount = 0;
+
+        cards.forEach((card) => {
+          const rawData = card.getAttribute("data-producto");
+          if (!rawData) return;
+          const otherP = JSON.parse(rawData);
+
+          if (
+            otherP.tipo === p.tipo &&
+            otherP.referencia !== p.referencia &&
+            relatedCount < 3
+          ) {
+            relatedCount++;
+
+            const relCard = document.createElement("div");
+            relCard.className =
+              "bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:border-[#4F46E5] hover:shadow-md transition-all flex flex-col justify-center min-h-[85px]";
+            relCard.innerHTML = `
+                <h4 class="text-[13px] font-medium text-[#111827] mb-1 leading-tight">${otherP.nombre}</h4>
+                <span class="text-[11px] text-slate-500 font-mono">KKM · ${otherP.referencia}</span>
+            `;
+
+            relCard.addEventListener("click", () => {
+              populateModal(otherP);
+              if (contentBox) contentBox.scrollTop = 0;
+            });
+
+            mRelatedGrid.appendChild(relCard);
+          }
+        });
+
+        mRelatedSection.style.display = relatedCount > 0 ? "block" : "none";
+      }
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const rawData = card.getAttribute("data-producto");
+        if (!rawData) return;
+        const p = JSON.parse(rawData);
+
+        populateModal(p);
+
+        if (modal) {
+          modal.classList.remove("hidden");
+          modal.classList.add("flex");
+          setTimeout(() => {
+            if (backdrop) backdrop.classList.remove("opacity-0");
+            if (contentBox) {
+              contentBox.classList.remove("opacity-0", "scale-95");
+              contentBox.classList.add("opacity-100", "scale-100");
+            }
+          }, 10);
+        }
+      });
+    });
+
+    const closeModal = () => {
+      if (backdrop) backdrop.classList.add("opacity-0");
+      if (contentBox) {
+        contentBox.classList.remove("opacity-100", "scale-100");
+        contentBox.classList.add("opacity-0", "scale-95");
+      }
+      setTimeout(() => {
+        if (modal) {
+          modal.classList.add("hidden");
+          modal.classList.remove("flex");
+        }
+      }, 300);
+    };
+
+    if (btnClose) btnClose.addEventListener("click", closeModal);
+    if (backdrop) backdrop.addEventListener("click", closeModal);
+  });
+</script>

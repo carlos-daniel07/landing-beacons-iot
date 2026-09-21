@@ -1,0 +1,127 @@
+---
+// src/components/ProductModal.astro
+---
+
+<div
+  id="simple-modal"
+  class="fixed inset-0 z-[100] hidden items-center justify-center px-4"
+>
+  <div
+    id="modal-backdrop"
+    class="absolute inset-0 bg-slate-900/60 backdrop-blur-sm opacity-0 transition-opacity duration-300 cursor-pointer"
+  >
+  </div>
+
+  <div
+    id="modal-content-box"
+    class="relative w-full max-w-5xl h-auto max-h-[90vh] bg-white rounded-[2rem] shadow-2xl flex flex-col overflow-y-auto overflow-x-hidden opacity-0 scale-95 transition-all duration-300"
+  >
+    <button
+      id="close-modal-btn"
+      class="absolute top-5 right-5 z-50 bg-slate-100 hover:bg-slate-200 text-slate-500 hover:text-slate-800 p-2.5 rounded-full transition-colors"
+    >
+      <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        ><path
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M6 18L18 6M6 6l12 12"></path></svg
+      >
+    </button>
+
+    <!-- SECCIÓN SUPERIOR -->
+    <div class="flex flex-col md:flex-row w-full flex-shrink-0">
+      <div
+        class="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-12 min-h-[300px] border-r border-b md:border-b-0 border-slate-100"
+      >
+        <img
+          id="m-img"
+          src=""
+          alt=""
+          class="max-w-full max-h-[380px] object-contain drop-shadow-md"
+        />
+      </div>
+
+      <div id="m-texts" class="w-full md:w-1/2 p-8 md:p-12 bg-white">
+        <div
+          id="m-badge"
+          class="inline-block bg-[#111827] text-white text-[10px] font-bold uppercase tracking-widest px-3 py-1.5 rounded-md mb-4"
+        >
+        </div>
+
+        <h2
+          id="m-title"
+          class="text-3xl md:text-4xl font-medium text-[#111827] leading-tight mb-2 tracking-tight"
+        >
+        </h2>
+        <p id="m-ref" class="text-sm font-mono font-medium text-slate-500 mb-8">
+        </p>
+
+        <div class="grid grid-cols-2 gap-3 mb-8">
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <span
+              class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold mb-1.5"
+              >Alcance</span
+            >
+            <span id="m-range" class="text-sm text-[#111827] font-bold"></span>
+          </div>
+          <div class="bg-slate-50 p-4 rounded-xl border border-slate-100">
+            <span
+              class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold mb-1.5"
+              >Batería</span
+            >
+            <span id="m-battery" class="text-sm text-[#111827] font-bold"
+            ></span>
+          </div>
+          <div
+            class="col-span-2 bg-slate-50 p-4 rounded-xl border border-slate-100 flex items-center justify-between"
+          >
+            <span
+              class="block text-[9px] text-slate-400 uppercase tracking-widest font-bold"
+              >Dimensiones Físicas</span
+            >
+            <span
+              id="m-dim"
+              class="text-xs text-[#111827] font-mono font-bold bg-white px-2 py-1 rounded border border-slate-200"
+            ></span>
+          </div>
+        </div>
+
+        <h3 class="text-[12px] text-[#111827] font-medium mb-4">
+          Características principales
+        </h3>
+        <ul id="m-features" class="space-y-2 mb-8 text-sm text-slate-500"></ul>
+
+        <div class="flex gap-4">
+          <a
+            href="#contacto"
+            class="flex-1 text-center bg-[#4F46E5] hover:bg-blue-700 text-white font-medium py-3 px-6 rounded-lg transition-colors"
+          >
+            Consultar por WhatsApp
+          </a>
+          <button
+            class="flex-1 text-center bg-white border border-[#4F46E5] hover:bg-blue-50 text-[#4F46E5] font-medium py-3 px-6 rounded-lg transition-colors"
+          >
+            Copiar enlace
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- SECCIÓN INFERIOR: Relacionados -->
+    <div
+      id="m-related-section"
+      class="w-full bg-[#f8fafc] border-t border-slate-100 p-8 md:p-12 flex-shrink-0 hidden"
+    >
+      <span
+        class="text-[#4F46E5] font-bold text-[10px] tracking-widest uppercase mb-2 block"
+        >Misma Categoría</span
+      >
+      <h3 class="text-2xl font-medium text-[#111827] mb-6">
+        Dispositivos relacionados
+      </h3>
+      <div id="m-related-grid" class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,42 +1,49 @@
+---
+// src/components/BlueLink.astro (o el nombre de tu archivo)
+---
+
 <section id="enlace-azul-section" class="h-[200vh] w-full relative z-20">
   <div
-    class="sticky top-0 h-dvh w-full overflow-hidden flex flex-col md:flex-row items-center justify-around px-10 sm:px-24 bg-[#05070a]"
+    class="sticky top-0 h-dvh w-full overflow-hidden flex flex-col md:flex-row items-center justify-around px-8 sm:px-16 md:px-24 bg-transparent"
   >
     <!-- Lado Izquierdo: Textos -->
     <div class="max-w-md pointer-events-auto z-20">
       <span
-        class="text-blue-400 font-mono text-sm tracking-widest uppercase mb-2 block"
+        class="text-blue-600 font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4 block"
         >Tecnología de rastreo</span
       >
-      <h2 class="text-4xl md:text-5xl font-bold text-white mb-4">
+      <h2
+        class="text-4xl md:text-5xl font-medium text-[#0f172a] tracking-tight leading-tight mb-6"
+      >
         Enlace Azul
       </h2>
-      <p class="text-lg text-gray-300 leading-relaxed mb-8">
+      <p class="text-lg text-slate-500 leading-relaxed mb-8">
         Cada activo emite una señal cifrada que es capturada de forma
         instantánea por nuestras puertas de enlace corporativas, enviando
         analítica precisa directo a la nube.
       </p>
     </div>
 
-    <!-- Lado Derecho: Interfaz del Flujo de Datos -->
+    <!-- Lado Derecho: Interfaz del Flujo de Datos (Light Theme) -->
     <div
-      class="relative w-[350px] h-[500px] border border-gray-800/80 rounded-3xl bg-[#0a0a0f] p-6 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(0,0,0,0.5)] flex-shrink-0"
+      class="relative w-[350px] h-[500px] border border-slate-200 rounded-3xl bg-white p-6 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.07)] flex-shrink-0"
     >
       <!-- NUBE Y DASHBOARD -->
       <div
         id="ea-cloud"
-        class="w-full bg-gray-900/80 border border-blue-500/30 rounded-xl p-4 z-10 shadow-[0_0_15px_rgba(59,130,246,0.15)]"
+        class="w-full bg-slate-50 border border-slate-100 rounded-xl p-4 z-10 shadow-sm"
       >
         <div class="flex justify-between items-center mb-3">
           <span
-            class="text-[10px] text-gray-400 uppercase font-bold tracking-wider"
+            class="text-[10px] text-slate-400 uppercase font-bold tracking-wider"
             >Dashboard IoT</span
           >
           <div class="flex items-center gap-1.5">
-            <span class="text-[8px] text-green-400 animate-pulse">EN LÍNEA</span
+            <span class="text-[8px] text-emerald-500 font-bold animate-pulse"
+              >EN LÍNEA</span
             >
             <div
-              class="w-2 h-2 rounded-full bg-green-500 shadow-[0_0_5px_#22c55e]"
+              class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]"
             >
             </div>
           </div>
@@ -44,25 +51,25 @@
 
         <!-- Feed de Telemetría -->
         <div
-          class="bg-black/60 rounded-lg p-3 border border-gray-700/50 font-mono text-[10px] space-y-2"
+          class="bg-white rounded-lg p-3 border border-slate-100 font-mono text-[10px] space-y-2 shadow-sm"
         >
           <div class="flex justify-between items-center">
-            <span class="text-gray-500">ID Activo:</span>
+            <span class="text-slate-400">ID Activo:</span>
             <span
-              class="text-gray-200 font-bold bg-gray-800 px-1.5 py-0.5 rounded"
+              class="text-slate-700 font-bold bg-slate-100 px-1.5 py-0.5 rounded"
               >S8-8902</span
             >
           </div>
           <div class="flex justify-between items-center">
-            <span class="text-gray-500">Zona Actual:</span>
-            <span id="ea-zona" class="text-blue-400 font-bold transition-colors"
+            <span class="text-slate-400">Zona Actual:</span>
+            <span id="ea-zona" class="text-blue-600 font-bold transition-colors"
               >Almacenamiento</span
             >
           </div>
           <div class="flex justify-between items-center">
-            <span class="text-gray-500">Distancia a GW:</span>
-            <span class="text-white font-bold"
-              ><span id="ea-distancia" class="text-lg text-blue-400">15.0</span> m</span
+            <span class="text-slate-400">Distancia a GW:</span>
+            <span class="text-slate-800 font-bold"
+              ><span id="ea-distancia" class="text-lg text-blue-600">15.0</span> m</span
             >
           </div>
         </div>
@@ -70,11 +77,11 @@
 
       <!-- LÍNEA DE SEÑAL 2 -->
       <div
-        class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-gray-800 -translate-x-1/2 overflow-hidden"
+        class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
       >
         <div
           id="ea-signal-up"
-          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-400 to-transparent absolute shadow-[0_0_12px_#60a5fa] opacity-0 -translate-y-full"
+          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute opacity-0 -translate-y-full"
         >
         </div>
       </div>
@@ -85,45 +92,45 @@
       >
         <div
           id="ea-gateway"
-          class="w-14 h-14 bg-gray-800/80 backdrop-blur border border-gray-600 rounded-lg flex items-center justify-center shadow-lg transition-colors"
+          class="w-14 h-14 bg-white/90 backdrop-blur border border-slate-200 rounded-xl flex items-center justify-center shadow-md transition-colors"
         >
-          <div class="w-6 h-6 border-2 border-gray-500 rounded-md"></div>
+          <div class="w-6 h-6 border-2 border-slate-300 rounded-md"></div>
         </div>
         <span
-          class="absolute -right-20 top-4 text-[9px] text-gray-500 uppercase font-mono"
+          class="absolute -right-24 top-5 text-[9px] text-slate-400 uppercase font-bold font-mono"
           >Gateway KG01</span
         >
       </div>
 
       <!-- LÍNEA DE SEÑAL 1 -->
       <div
-        class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-gray-800 -translate-x-1/2 overflow-hidden"
+        class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
       >
         <div
           id="ea-signal-down"
-          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute shadow-[0_0_12px_#3b82f6] opacity-0 -translate-y-full"
+          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute opacity-0 -translate-y-full"
         >
         </div>
       </div>
 
       <!-- ZONA DE TRÁNSITO Y ACTIVO -->
       <div
-        class="w-full h-16 border-t border-dashed border-gray-700/50 mt-auto relative flex items-center"
+        class="w-full h-16 border-t border-dashed border-slate-300 mt-auto relative flex items-center"
       >
         <span
-          class="absolute -top-5 left-0 text-[9px] text-gray-600 uppercase font-mono"
+          class="absolute -top-5 left-0 text-[9px] text-slate-400 uppercase font-bold font-mono"
           >Línea de Producción</span
         >
         <div
           id="ea-asset"
-          class="absolute left-0 w-24 h-10 bg-gray-800/50 border border-gray-700 rounded-lg flex items-center justify-between px-2"
+          class="absolute left-0 w-24 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between px-2 shadow-sm"
         >
-          <span class="text-[10px] text-gray-400 font-bold">Activo</span>
+          <span class="text-[10px] text-slate-500 font-bold">Activo</span>
           <div
             id="ea-asset-beacon"
-            class="w-3 h-3 bg-blue-900/50 border border-blue-500/50 rounded-full flex items-center justify-center"
+            class="w-3 h-3 bg-blue-100 border border-blue-300 rounded-full flex items-center justify-center"
           >
-            <div class="w-1 h-1 bg-blue-400 rounded-full"></div>
+            <div class="w-1 h-1 bg-blue-500 rounded-full"></div>
           </div>
         </div>
       </div>
@@ -169,21 +176,21 @@
 
             if (telemetria.distancia > 10) {
               textoZona.innerText = "Almacenamiento";
-              textoZona.className = "text-blue-400 font-bold transition-colors";
+              textoZona.className = "text-blue-600 font-bold transition-colors";
               textoDistancia.className =
-                "text-lg text-blue-400 transition-colors";
+                "text-lg text-blue-600 transition-colors";
             } else if (telemetria.distancia > 5) {
               textoZona.innerText = "Pasillo de Tránsito";
               textoZona.className =
-                "text-purple-400 font-bold transition-colors";
+                "text-purple-600 font-bold transition-colors";
               textoDistancia.className =
-                "text-lg text-purple-400 transition-colors";
+                "text-lg text-purple-600 transition-colors";
             } else {
               textoZona.innerText = "Bahía de Carga";
               textoZona.className =
-                "text-green-400 font-bold transition-colors";
+                "text-emerald-600 font-bold transition-colors";
               textoDistancia.className =
-                "text-lg text-green-400 transition-colors";
+                "text-lg text-emerald-600 transition-colors";
             }
           },
         },
@@ -193,7 +200,8 @@
         "#ea-asset-beacon",
         {
           backgroundColor: "#3b82f6",
-          boxShadow: "0 0 10px #3b82f6",
+          borderColor: "#2563eb",
+          boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)",
           duration: 0.2,
           repeat: 10,
           yoyo: true,
@@ -209,8 +217,9 @@
       .to(
         "#ea-gateway",
         {
-          borderColor: "#60a5fa",
-          backgroundColor: "rgba(30, 58, 138, 0.5)",
+          borderColor: "#3b82f6",
+          backgroundColor: "#eff6ff", // blue-50 para indicar activación en tema claro
+          boxShadow: "0 4px 15px rgba(59, 130, 246, 0.2)",
           duration: 0.2,
           repeat: 9,
           yoyo: true,

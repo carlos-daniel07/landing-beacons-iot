@@ -1,0 +1,235 @@
+---
+// src/components/Header.astro
+---
+
+<header
+  id="main-header"
+  class="fixed z-50 pointer-events-none transition-all duration-500 ease-out
+  bottom-5 inset-x-5 max-w-sm mx-auto /* Móvil: Píldora inferior separada de los bordes */
+  md:top-6 md:bottom-auto md:inset-x-0 md:max-w-5xl md:w-[95%] /* Escritorio (Inicial): Empieza a 24px del top */"
+>
+  <div
+    id="header-container"
+    class="pointer-events-auto flex justify-between items-center transition-all duration-500 ease-out
+    bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-2xl rounded-[2rem] px-5 py-3 /* Móvil */
+    md:bg-transparent md:backdrop-blur-none md:border-transparent md:shadow-none md:px-0 /* Escritorio (Inicial) */"
+  >
+    <div
+      class="hidden md:flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 pl-4"
+      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    >
+      <img
+        id="header-logo"
+        src="/Logo.png"
+        alt="BiT Logo"
+        class="h-8 w-auto drop-shadow-sm transition-all duration-500"
+      />
+    </div>
+
+    <nav
+      id="desktop-nav"
+      class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700 transition-all duration-500 ease-out
+      bg-white/90 backdrop-blur-md px-8 py-2.5 rounded-full border border-slate-200/80 shadow-sm"
+    >
+      <a href="#soluciones" class="hover:text-blue-600 transition-colors"
+        >Soluciones</a
+      >
+      <a href="#hardware" class="hover:text-blue-600 transition-colors"
+        >Hardware</a
+      >
+      <a href="#contacto" class="hover:text-blue-600 transition-colors"
+        >Contacto</a
+      >
+    </nav>
+
+    <div class="hidden md:block pr-4">
+      <a
+        id="header-btn"
+        href="#contacto"
+        class="inline-block bg-[#111827] hover:bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all duration-500 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+      >
+        Cotizar Kit
+      </a>
+    </div>
+
+    <nav
+      class="flex md:hidden w-full justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-wide px-2"
+    >
+      <a
+        href="#soluciones"
+        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"
+          ></path></svg
+        >
+        <span>Solución</span>
+      </a>
+
+      <a
+        href="#hardware"
+        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z"
+          ></path></svg
+        >
+        <span>Hardware</span>
+      </a>
+
+      <a
+        href="#contacto"
+        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
+          ></path></svg
+        >
+        <span>Contacto</span>
+      </a>
+
+      <a
+        href="#contacto"
+        class="flex flex-col items-center gap-1.5 text-blue-600"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M13 10V3L4 14h7v7l9-11h-7z"></path></svg
+        >
+        <span>Cotizar</span>
+      </a>
+    </nav>
+  </div>
+</header>
+
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    const mainHeader = document.getElementById("main-header");
+    const headerContainer = document.getElementById("header-container");
+    const desktopNav = document.getElementById("desktop-nav");
+    const headerLogo = document.getElementById("header-logo");
+    const headerBtn = document.getElementById("header-btn");
+
+    window.addEventListener("scroll", () => {
+      if (window.innerWidth >= 768) {
+        if (window.scrollY > 40) {
+          // 1. Posición: Sube pero se queda a 5px del borde
+          mainHeader?.classList.remove("md:top-6");
+          mainHeader?.classList.add("md:top-[5px]");
+
+          // 2. Contenedor: Se vuelve barra blanca, con padding muy fino (py-1.5)
+          headerContainer?.classList.remove(
+            "md:bg-transparent",
+            "md:backdrop-blur-none",
+            "md:border-transparent",
+            "md:shadow-none",
+            "md:px-0",
+          );
+          headerContainer?.classList.add(
+            "md:bg-white/90",
+            "md:backdrop-blur-md",
+            "md:border-slate-200/80",
+            "md:shadow-md",
+            "md:px-2",
+            "md:py-1.5",
+            "md:rounded-full",
+          );
+
+          // 3. Píldora de Nav: Se hace invisible para fundirse y reduce su padding
+          desktopNav?.classList.remove(
+            "bg-white/90",
+            "backdrop-blur-md",
+            "border-slate-200/80",
+            "shadow-sm",
+            "py-2.5",
+          );
+          desktopNav?.classList.add(
+            "bg-transparent",
+            "border-transparent",
+            "shadow-none",
+            "py-1",
+          );
+
+          // 4. ADELGAZAMIENTO: Achicamos el logo y el botón para que la barra no sea gruesa
+          headerLogo?.classList.remove("h-8");
+          headerLogo?.classList.add("h-6"); // Logo más pequeño
+
+          headerBtn?.classList.remove("py-2.5", "px-6");
+          headerBtn?.classList.add("py-2", "px-5", "text-[10px]"); // Botón más compacto
+        } else {
+          // RESET: Vuelve a su estado flotante separado
+          mainHeader?.classList.add("md:top-6");
+          mainHeader?.classList.remove("md:top-[5px]");
+
+          headerContainer?.classList.add(
+            "md:bg-transparent",
+            "md:backdrop-blur-none",
+            "md:border-transparent",
+            "md:shadow-none",
+            "md:px-0",
+          );
+          headerContainer?.classList.remove(
+            "md:bg-white/90",
+            "md:backdrop-blur-md",
+            "md:border-slate-200/80",
+            "md:shadow-md",
+            "md:px-2",
+            "md:py-1.5",
+            "md:rounded-full",
+          );
+
+          desktopNav?.classList.add(
+            "bg-white/90",
+            "backdrop-blur-md",
+            "border-slate-200/80",
+            "shadow-sm",
+            "py-2.5",
+          );
+          desktopNav?.classList.remove(
+            "bg-transparent",
+            "border-transparent",
+            "shadow-none",
+            "py-1",
+          );
+
+          headerLogo?.classList.add("h-8");
+          headerLogo?.classList.remove("h-6");
+
+          headerBtn?.classList.add("py-2.5", "px-6");
+          headerBtn?.classList.remove("py-2", "px-5", "text-[10px]");
+        }
+      }
+    });
+  });
+</script>
