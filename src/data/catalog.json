@@ -1,0 +1,1206 @@
+{
+  "catalog": "activos",
+  "productos": [
+    {
+      "alcance": "80 m",
+      "bateria": "40mAh; 18 meses",
+      "capacidades": [
+        "Etiqueta imprimible",
+        "Tecnología UHF NFC y BLE",
+        "Alcance de transmisión de hasta 80 m"
+      ],
+      "dimensiones": "100mm×150mmx1.5mm",
+      "nombre": "Etiqueta imprimible para activos",
+      "proteccion": null,
+      "referencia": "C6",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/c6-ble-printable-asset-label",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/C6_Etiqueta_imprimible_para_activos.webp"
+    },
+    {
+      "alcance": "80 m",
+      "bateria": "40mAh; 18 meses",
+      "capacidades": [
+        "Espesor aproximado de 1,5 mm",
+        "Peso aproximado de 4 g",
+        "Activación mediante UHF NFC"
+      ],
+      "dimensiones": "58mm×68mmx1.5mm",
+      "nombre": "Etiqueta ultradelgada de papel",
+      "proteccion": null,
+      "referencia": "C5",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/c5-ultra-thin-paper-asset-tag",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/C5_Etiqueta_ultradelgada_de_papel.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "pila tipo moneda; 4 meses",
+      "capacidades": [
+        "Peso aproximado de 1,2 g",
+        "Protección IP67",
+        "Batería CR2032 reemplazable"
+      ],
+      "dimensiones": "20 × 28.8 × 2.2mm",
+      "nombre": "Etiqueta BLE ultracompacto",
+      "proteccion": "IP67",
+      "referencia": "C2",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/thin-beacon-tag-c2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/C2_Tag_BLE_ultracompacto.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; 210mAh; 16 meses",
+      "capacidades": [
+        "Uso como llavero o pulsera",
+        "Protección IP63",
+        "Autonomía indicada de hasta 16 meses"
+      ],
+      "dimensiones": "Diámetro: 32.2mm × 8mm",
+      "nombre": "Etiqueta vestible multipropósito",
+      "proteccion": "IP63",
+      "referencia": "W1",
+      "sensores": [
+        "Acelerómetro (opcional)",
+        "Nivel de batería",
+        "Temperatura",
+        "No se transmite de forma predeterminada"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/wearable-tag-w1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W1_Tag_wearable_multiproposito.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; 14 meses",
+      "capacidades": [
+        "Diseño portátil tipo llavero",
+        "Botón SOS",
+        "Batería CR2032 reemplazable"
+      ],
+      "dimensiones": "36 × 36 × 5.6mm",
+      "nombre": "Baliza tipo llavero",
+      "proteccion": "IP44",
+      "referencia": "K11",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/keychain-beacon-k11",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K11_Beacon_tipo_llavero.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2450; hasta 36 meses",
+      "capacidades": [
+        "Protección IP67",
+        "Formato tipo llavero",
+        "Autonomía indicada de hasta 3 años"
+      ],
+      "dimensiones": "37 × 37 × 8mm",
+      "nombre": "Baliza impermeable",
+      "proteccion": "IP67",
+      "referencia": "K12",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/waterproof-beacon-k12",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K12_Beacon_impermeable.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; 16 meses",
+      "capacidades": [
+        "Tamaño ultracompacto",
+        "Batería de fácil reemplazo",
+        "Diseño portátil de bajo consumo"
+      ],
+      "dimensiones": "37.6 × 24 × 5.3mm",
+      "nombre": "Baliza Baliza iBeacon compacto",
+      "proteccion": "IP44",
+      "referencia": "K15",
+      "sensores": [
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/small-beacon-k15",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K15_iBeacon_compacto.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; pila tipo moneda; 16 meses",
+      "capacidades": [
+        "Avisador sonoro integrado",
+        "Botón SOS",
+        "Batería CR2032 reemplazable"
+      ],
+      "dimensiones": "36mm × 36mm × 5.6mm",
+      "nombre": "Baliza portátil con sonido",
+      "proteccion": "Resistente a salpicaduras",
+      "referencia": "K21",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/portable-beacon-k21",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K21_Beacon_portatil_con_sonido.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "batería recargable de polímero de litio; 6 meses",
+      "capacidades": [
+        "Avisador sonoro integrado",
+        "Protección IP67 y carga magnética",
+        "Botón de pánico o SOS"
+      ],
+      "dimensiones": "38 × 38 × 5.5mm",
+      "nombre": "Baliza recargable",
+      "proteccion": "IP67",
+      "referencia": "F1",
+      "sensores": [
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/rechargeable-beacon-f1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/F1_Beacon_recargable.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "alimentación USB 5V; sin batería; puerto USB 5V",
+      "capacidades": [
+        "Conectar y usar",
+        "Sin mantenimiento de batería",
+        "Formato compacto y portátil"
+      ],
+      "dimensiones": "22mm × 16mm × 6mm",
+      "nombre": "Baliza USB",
+      "proteccion": "No especificada",
+      "referencia": "U1",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/usb-beacon-u1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/U1_Beacon_USB.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "batería reemplazable",
+      "capacidades": [
+        "Tamaño y peso reducidos",
+        "Batería reemplazable",
+        "Uso portátil y discreto"
+      ],
+      "dimensiones": null,
+      "nombre": "Etiqueta BLE miniatura",
+      "proteccion": null,
+      "referencia": "K16",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/bluetooth-beacon",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K16_Tag_BLE_miniatura.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2016; 10 meses",
+      "capacidades": [
+        "Cuerpo de 37,6 x 24 x 3,5 mm",
+        "Batería CR2016 reemplazable",
+        "Acelerómetro opcional según configuración"
+      ],
+      "dimensiones": "37.6 × 24 × 3.5mm",
+      "nombre": "Baliza ultradelgado",
+      "proteccion": "IP44",
+      "referencia": "K17",
+      "sensores": [
+        "Acelerómetro opcional",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/ultra-thin-beacon-k17",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K17_Beacon_ultradelgado.webp"
+    },
+    {
+      "alcance": "hasta 100 m",
+      "bateria": "CR2032; 16 meses",
+      "capacidades": [
+        "Marco metálico resistente",
+        "Diseño tipo llavero",
+        "Botón grande para SOS"
+      ],
+      "dimensiones": "38mm × 38mm × 8mm",
+      "nombre": "Botón de pánico tipo llavero",
+      "proteccion": "No especificada",
+      "referencia": "F2",
+      "sensores": [
+        "Zumbador",
+        "Nivel de batería Temperatura Alerta antimanipulación",
+        "No especificado"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/keychain-panic-button-button-f2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/F2_Boton_de_panico_tipo_llavero.webp"
+    },
+    {
+      "alcance": "100m",
+      "bateria": "CR2025; 6 meses",
+      "capacidades": [
+        "Diseñada para niños",
+        "Materiales de enfoque ecoamigable",
+        "Batería reemplazable"
+      ],
+      "dimensiones": "Diámetro de la esfera: 32mm; longitud de la correa: 187mm",
+      "nombre": "Pulsera Baliza infantil",
+      "proteccion": "IP56",
+      "referencia": "W4",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/wearable-beacon-w4-for-kid",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W4_Pulsera_beacon_infantil.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "CR2025; 4 meses",
+      "capacidades": [
+        "Alerta por corte de la banda",
+        "Pulsera para entornos asistenciales",
+        "Protección IP67"
+      ],
+      "dimensiones": "Diámetro: 30mm × 250mm",
+      "nombre": "Baliza médico antimanipulación",
+      "proteccion": "IP67",
+      "referencia": "W3",
+      "sensores": [
+        "Corte",
+        "Alerta antimanipulación",
+        "Corte de banda"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/medical-beacon-w3",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W3_Beacon_medico_anti_manipulacion.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "batería de polímero de litio; 4 meses",
+      "capacidades": [
+        "Uso como pulsera o colgante",
+        "Resistente al agua",
+        "BLE 5.0 y batería recargable"
+      ],
+      "dimensiones": "Diámetro de la esfera: 40mm; longitud de la correa: 260mm",
+      "nombre": "Baliza de pulsera o colgante",
+      "proteccion": "No especificada",
+      "referencia": "W51",
+      "sensores": [
+        "Motor de vibración optioonal"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/wearable-beacon-w51",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W51_Beacon_de_pulsera_o_colgante.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "CR2032; 210mAh; 16 meses",
+      "capacidades": [
+        "Autonomía indicada de hasta 16 meses",
+        "Consumo ultrabajo",
+        "Botón SOS"
+      ],
+      "dimensiones": "Diámetro de la esfera: 40mm; longitud de la correa: 260mm",
+      "nombre": "Pulsera Baliza de larga autonomía",
+      "proteccion": "No especificada",
+      "referencia": "W52",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/bracelet-beacon-w52",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W52_Pulsera_beacon_de_larga_autonomia.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "batería de polímero de litio; 4 meses",
+      "capacidades": [
+        "Sonido y vibración",
+        "Protección IP67",
+        "Carga por USB"
+      ],
+      "dimensiones": "40 × 18 × 9.5mm",
+      "nombre": "Pulsera recargable con alertas",
+      "proteccion": "IP67",
+      "referencia": "W59",
+      "sensores": [
+        "Motor de vibración optioonal",
+        "Vibración",
+        "Sonido"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/rechargeable-bracelet-beacon-w59-2-2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W59_Pulsera_recargable_con_alertas.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "CR2032; 16 meses",
+      "capacidades": [
+        "Protección IP67",
+        "Banda reemplazable",
+        "Diseño para identificación de personas"
+      ],
+      "dimensiones": "Diámetro: 34mm × 8.4mm, correa 250mm",
+      "nombre": "Pulsera médica",
+      "proteccion": "IP67",
+      "referencia": "W8",
+      "sensores": [
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/medical-wristband-w8",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W8_Pulsera_medica.webp"
+    },
+    {
+      "alcance": "hasta 100m",
+      "bateria": "batería de polímero de litio; hasta 18 meses",
+      "capacidades": [
+        "Detección de corte",
+        "Diseño anti manipulación",
+        "Protección IP67"
+      ],
+      "dimensiones": "45mm × 50mm × 260mm",
+      "nombre": "Pulsera antimanipulación",
+      "proteccion": "IP67",
+      "referencia": "W7",
+      "sensores": [
+        "Sensor de temperatura corporal",
+        "Corte de banda",
+        "Antimanipulación"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/tamperproof-beacon-w7",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W7_Pulsera_anti_manipulacion.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "210mAh; 3 años",
+      "capacidades": [
+        "Diseñado para fijación en casco",
+        "Construcción compacta y robusta",
+        "Protección IP67"
+      ],
+      "dimensiones": "42mm × 28mm × 8mm",
+      "nombre": "Etiqueta para casco",
+      "proteccion": "No especificada",
+      "referencia": "W9",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±1 °C",
+        "-30 °C a 60 °C; Acelerómetro opcional",
+        "Temperatura"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/helmet-tag-w9",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/W9_Tag_para_casco.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "batería de polímero de litio; batería de ion de litio; 42 meses",
+      "capacidades": [
+        "Opciones de NFC",
+        "Protección IP67",
+        "Botón SOS"
+      ],
+      "dimensiones": "86mm × 56mm × 4.6mm",
+      "nombre": "Baliza tipo tarjeta",
+      "proteccion": "IP67",
+      "referencia": "K7",
+      "sensores": [
+        "Acelerómetro opcionalNFC opcional"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/card-beacon-k7",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K7_Beacon_tipo_tarjeta.webp"
+    },
+    {
+      "alcance": "80 m",
+      "bateria": "400mAh batería recargable; 16 meses",
+      "capacidades": [
+        "Formato de credencial",
+        "Batería recargable",
+        "Botón para eventos y alarmas"
+      ],
+      "dimensiones": "86mm × 56mm × 5.4mm",
+      "nombre": "Credencial Baliza recargable",
+      "proteccion": "IP67",
+      "referencia": "C3",
+      "sensores": [
+        "Sensor acelerómetro (opcional)",
+        "Nivel de batería Temperatura Alerta antimanipulación",
+        "Mediciones reales"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/rechargeable-badge-c3",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/C3_Credencial_beacon_recargable.webp"
+    },
+    {
+      "alcance": "100m",
+      "bateria": "CR2477; 48 meses",
+      "capacidades": [
+        "Protección IP68",
+        "Autonomía indicada de hasta 4 años",
+        "Sensor acelerómetro"
+      ],
+      "dimensiones": "46 × 39 × 22mm",
+      "nombre": "Baliza para localización",
+      "proteccion": "IP68",
+      "referencia": "K3",
+      "sensores": [
+        "Acelerómetro",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/location-beacon-k3",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K3_Beacon_para_localizacion.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "batería de fácil reemplazo; autonomía indicada de hasta 4 años",
+      "capacidades": [
+        "Protección IP67",
+        "Batería de fácil reemplazo",
+        "Autonomía indicada de hasta 4 años"
+      ],
+      "dimensiones": null,
+      "nombre": "Baliza para seguimiento de activos",
+      "proteccion": "IP67",
+      "referencia": "K4",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/waterproof-asset-tracking-beacon-k4",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K4_Beacon_para_seguimiento_de_activos.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2477; pila tipo moneda; 48 meses",
+      "capacidades": [
+        "Protección IP67",
+        "Alcance indicado de hasta 150 m",
+        "Sensor acelerómetro"
+      ],
+      "dimensiones": "40 × 15.7mm",
+      "nombre": "Baliza industrial impermeable",
+      "proteccion": "IP67",
+      "referencia": "K5",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/asset-tracking-beacon-k5",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K5_Beacon_industrial_impermeable.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2477; pila tipo moneda; 48 meses",
+      "capacidades": [
+        "Protección IP65",
+        "Botón externo",
+        "Sensor acelerómetro"
+      ],
+      "dimensiones": "47 × 15mm",
+      "nombre": "Baliza de ubicación con botón",
+      "proteccion": "IP65",
+      "referencia": "K8",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/waterproof-beacon-k8",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K8_Beacon_de_ubicacion_con_boton.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "8 años",
+      "capacidades": [
+        "Protección IP67",
+        "Carcasa industrial resistente",
+        "Autonomía indicada de hasta 8 años"
+      ],
+      "dimensiones": "58mm × 36mm × 25mm",
+      "nombre": "Baliza para estibas",
+      "proteccion": "IP67",
+      "referencia": "K9",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/pallet-tracking-beacon-k9",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K9_Beacon_para_pallets.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "1000mAh; 48 meses",
+      "capacidades": [
+        "Protección IP68",
+        "Resistencia a impacto IK08",
+        "Acelerómetro o RFID opcional"
+      ],
+      "dimensiones": "127mm × 26mm × 10mm",
+      "nombre": "Baliza robusto para estibas",
+      "proteccion": "IK08",
+      "referencia": "P1",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±1 °C; Acelerómetro opcional",
+        "Temperatura",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/pallet-beacon-p1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/P1_Beacon_robusto_para_pallets.webp"
+    },
+    {
+      "alcance": "800 m",
+      "bateria": "CR2477; pila tipo moneda; 48 meses",
+      "capacidades": [
+        "Protección IP67",
+        "Bluetooth LE PHY codificada",
+        "Sensor acelerómetro"
+      ],
+      "dimensiones": "40 × 15.7mm",
+      "nombre": "Baliza PHY codificada de largo alcance",
+      "proteccion": "IP67",
+      "referencia": "K5P",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro",
+        "Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/long-range-beacon-k5p",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K5P_Beacon_PHY_Coded_de_largo_alcance.webp"
+    },
+    {
+      "alcance": "100m",
+      "bateria": "2600mAh; hasta 8 años",
+      "capacidades": [
+        "Conexión de sondas o sensores",
+        "Bluetooth LE PHY codificada",
+        "Autonomía indicada de hasta 8 años"
+      ],
+      "dimensiones": "94mm × 38mm × 18mm",
+      "nombre": "Baliza con sensor de largo alcance",
+      "proteccion": "IP63",
+      "referencia": "K6P",
+      "sensores": [
+        "Sensor de temperatura y humedad: +",
+        "-0.3 °C",
+        "-40 °C a 70 °CAcelerómetro: opcional"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/long-range-sensor-beacon-k6p",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K6P_Beacon_sensor_de_largo_alcance.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "batería de polímero de litio; batería de ion de litio; 42 meses",
+      "capacidades": [
+        "Consumo ultrabajo",
+        "Compatibilidad BLE 4.0 y 5.0",
+        "Logo y color personalizables"
+      ],
+      "dimensiones": "86mm × 56mm × 4.6mm",
+      "nombre": "Credencial Baliza de largo alcance",
+      "proteccion": "IP67",
+      "referencia": "K7P",
+      "sensores": [
+        "Acelerómetro opcional NFC opcional"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/badge-beacon-k7p",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K7P_Credencial_beacon_de_largo_alcance.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "8 años",
+      "capacidades": [
+        "Protección IP67",
+        "Bluetooth LE PHY codificada",
+        "Autonomía indicada de hasta 8 años"
+      ],
+      "dimensiones": "58mm × 36mm × 25mm",
+      "nombre": "Baliza industrial de largo alcance",
+      "proteccion": "IP67",
+      "referencia": "K9P",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±3 °C",
+        "-40 °C a 70 °C; Acelerómetro"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/long-range-beacon-k9p",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K9P_Beacon_industrial_de_largo_alcance.webp"
+    },
+    {
+      "alcance": "900 m",
+      "bateria": "batería de gran capacidad",
+      "capacidades": [
+        "Alcance publicitado de hasta 900 m",
+        "Batería de gran capacidad",
+        "Protección IP67"
+      ],
+      "dimensiones": null,
+      "nombre": "Baliza de autonomía y alcance extendidos",
+      "proteccion": "IP67",
+      "referencia": "P2",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/ultra-long-battery-life-beacon-p2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/P2_Beacon_de_autonomia_y_alcance_extendidos.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "autonomía extendida",
+      "capacidades": [
+        "Botón de fácil accionamiento",
+        "Alarma sonora y confirmación",
+        "Autonomía extendida"
+      ],
+      "dimensiones": null,
+      "nombre": "Baliza de emergencia con sonido",
+      "proteccion": null,
+      "referencia": "B1",
+      "sensores": [
+        "Sonido"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/sos-button-b1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/B1_Beacon_de_emergencia_con_sonido.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "autonomía extendida",
+      "capacidades": [
+        "Accionamiento sencillo",
+        "Tamaño pequeño y portátil",
+        "Autonomía extendida"
+      ],
+      "dimensiones": null,
+      "nombre": "Botón de pánico compacto",
+      "proteccion": null,
+      "referencia": "B2",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/panic-button-b2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/B2_Boton_de_panico_compacto.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "Activación por botón o cuerda",
+        "Diseño orientado a asistencia",
+        "Adecuado para adultos mayores"
+      ],
+      "dimensiones": null,
+      "nombre": "Botón SOS con cuerda",
+      "proteccion": null,
+      "referencia": "B5",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/b5-sos-button-with-rope",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/B5_Boton_SOS_con_cuerda.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "CR2032; pila tipo moneda; 15 meses",
+      "capacidades": [
+        "Localización por ángulo de llegada",
+        "Carga útil configurable y cifrada",
+        "Protocolo AoA privado disponible"
+      ],
+      "dimensiones": "37.6mm × 24mm × 5.3mm",
+      "nombre": "Baliza para localización AoA",
+      "proteccion": null,
+      "referencia": "K15L",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/aoa-beacon-k15l",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K15L_Beacon_para_localizacion_AoA.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "Protección IP67",
+        "Bluetooth 5.1 AoA",
+        "CTE extendido configurable"
+      ],
+      "dimensiones": null,
+      "nombre": "Etiqueta de activos Bluetooth AoA",
+      "proteccion": "IP67",
+      "referencia": "K5PA",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/direction-finding-ble-aoa-asset-tracking-tag-k5pa",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K5PA_Tag_de_activos_Bluetooth_AoA.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "Bluetooth 5.1 AoA",
+        "Protección IP67",
+        "CTE extendido configurable"
+      ],
+      "dimensiones": null,
+      "nombre": "Credencial de personal Bluetooth AoA",
+      "proteccion": "IP67",
+      "referencia": "K7PA",
+      "sensores": [],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/bluetooth-aoa-id-badge",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K7PA_Credencial_de_personal_Bluetooth_AoA.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; pila tipo moneda; 16 meses",
+      "capacidades": [
+        "Medición de temperatura",
+        "Transmisión periódica por BLE",
+        "Formato compacto para monitoreo"
+      ],
+      "dimensiones": "36mm × 36mm × 5.6mm",
+      "nombre": "Baliza con sensor de temperatura",
+      "proteccion": "Resistente a salpicaduras",
+      "referencia": "K23",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±0.5 °C",
+        "-40 °C a 70 °C",
+        "Temperatura"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/temperature-sensor-beacon-k23",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K23_Beacon_con_sensor_de_temperatura.webp"
+    },
+    {
+      "alcance": "100m",
+      "bateria": "2600mAh; hasta 8 años",
+      "capacidades": [
+        "Sensores configurables",
+        "Registro local de datos compatible",
+        "Integración mediante BLE"
+      ],
+      "dimensiones": "94mm × 38mm × 18mm",
+      "nombre": "Baliza multisensor",
+      "proteccion": "IP63",
+      "referencia": "K6",
+      "sensores": [
+        "Sensor de temperatura y humedad: +",
+        "-0.3 °C",
+        "-40 °C a 70 °CAcelerómetro: opcional"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/sensor-beacon-k6",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K6_Beacon_multisensor.webp"
+    },
+    {
+      "alcance": "180m",
+      "bateria": "CR2477; 4 años",
+      "capacidades": [
+        "Carcasa para ambientes exigentes",
+        "Variables ambientales según versión",
+        "Comunicación Bluetooth de bajo consumo"
+      ],
+      "dimensiones": "Diámetro: 38mm × 12mm",
+      "nombre": "Sensor BLE impermeable",
+      "proteccion": "IP67",
+      "referencia": "S5",
+      "sensores": [
+        "Sensor de temperatura y humedad; acelerómetro",
+        "Nivel de batería Temperatura Humedad Aceleración X",
+        "Y",
+        "Z",
+        "Mediciones reales"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/waterproof-sensor-beacon-s5",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S5_Sensor_beacon_impermeable.webp"
+    },
+    {
+      "alcance": "300 m",
+      "bateria": "2600mAh; 8 años",
+      "capacidades": [
+        "Temperatura y humedad",
+        "Aplicación industrial",
+        "Transmisión de datos por BLE"
+      ],
+      "dimensiones": "88mm × 58mm × 35mm",
+      "nombre": "Sensor industrial de temperatura y humedad",
+      "proteccion": "IP67",
+      "referencia": "S6e",
+      "sensores": [
+        "Sonda de temperatura o humedad; sensor acelerómetro",
+        "Nivel de batería Temperatura Humedad Aceleración X",
+        "Y",
+        "Z",
+        "Mediciones reales",
+        "Temperatura",
+        "Humedad"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/bluetooth-temperature-humidity-sensor-beacon-s6",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S6e_Sensor_industrial_de_temperatura_y_humedad.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2477; pila tipo moneda; 48 meses",
+      "capacidades": [
+        "Registro de temperatura",
+        "Lectura mediante Bluetooth",
+        "Formato portátil para cadena de frío"
+      ],
+      "dimensiones": "Diámetro: 40 × 17mm",
+      "nombre": "Registrador BLE de temperatura",
+      "proteccion": "IP67",
+      "referencia": "K4PT",
+      "sensores": [
+        "Sensor de temperatura",
+        "Margen de error: ±0.5 °C",
+        "-40 °C a 70 °C",
+        "Temperatura"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/ble-temperature-logger-k4pt",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K4PT_Registrador_BLE_de_temperatura.webp"
+    },
+    {
+      "alcance": "100m",
+      "bateria": "CR2032; 12 meses",
+      "capacidades": [
+        "Hasta 60.000 registros indicados",
+        "Carcasa impermeable",
+        "Uso en cadena de frío y transporte"
+      ],
+      "dimensiones": "50.5mm × 29.6mm × 7mm",
+      "nombre": "Registrador de temperatura",
+      "proteccion": "IP65",
+      "referencia": "S23",
+      "sensores": [
+        "Sensor de temperatura (predeterminado); sensor de humedad (opcional)",
+        "Nivel de batería Temperatura Humedad",
+        "Mediciones reales"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/temperature-logger-s23",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S23_Registrador_de_temperatura.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "4000mAh; 8 años; 6 años",
+      "capacidades": [
+        "Visualización local",
+        "Medición ambiental",
+        "Transmisión Bluetooth de bajo consumo"
+      ],
+      "dimensiones": null,
+      "nombre": "Sensor BLE con pantalla",
+      "proteccion": "IP67",
+      "referencia": "S6S",
+      "sensores": [
+        "Sensor digital de temperatura y humedad",
+        "NTC",
+        "PT100",
+        "IP65",
+        "IP67",
+        "Nivel de batería; Temperatura; Humedad",
+        "Mediciones reales"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/temperature-sensor-s6s-with-display",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S6S_Sensor_BLE_con_pantalla.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "hasta 5 años",
+      "capacidades": [
+        "Detección de luz",
+        "Función PIR según configuración",
+        "Reporte de eventos por BLE"
+      ],
+      "dimensiones": "48 × 48 × 53mm",
+      "nombre": "Sensor de luz y movimiento",
+      "proteccion": null,
+      "referencia": "S3",
+      "sensores": [
+        "PIR",
+        "Luz"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/s3-light-sensor-beacon",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S3_Sensor_de_luz_y_movimiento.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "hasta 4 años",
+      "capacidades": [
+        "Detección de presencia o movimiento",
+        "Tecnología PIR",
+        "Comunicación inalámbrica BLE"
+      ],
+      "dimensiones": "Dimensiones (largo × ancho × alto)",
+      "nombre": "Sensor infrarrojo pasivo",
+      "proteccion": null,
+      "referencia": "S2",
+      "sensores": [
+        "PIR"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/pir-sensor-s2",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S2_Sensor_infrarrojo_pasivo.webp"
+    },
+    {
+      "alcance": "BLE 4.0",
+      "bateria": "batería de polímero de litio; 2 meses",
+      "capacidades": [
+        "Medición orientada a temperatura corporal",
+        "Formato vestible",
+        "Transmisión de datos por BLE"
+      ],
+      "dimensiones": "Diámetro: 40mm × 9mm, longitud de la correa 260mm",
+      "nombre": "Baliza de temperatura corporal",
+      "proteccion": "IP67",
+      "referencia": "K68",
+      "sensores": [
+        "Sensor de temperatura corporal",
+        "Temperatura"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/body-temperature-beacon-k68",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K68_Beacon_de_temperatura_corporal.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2032; 18 meses",
+      "capacidades": [
+        "Detección de apertura y cierre",
+        "Reporte de estado por BLE",
+        "Aplicación en seguridad y automatización"
+      ],
+      "dimensiones": "52 × 26 × 14.5mm",
+      "nombre": "Sensor de apertura de puerta",
+      "proteccion": "IP44",
+      "referencia": "S1",
+      "sensores": [
+        "Apertura de puerta"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/door-sensor-s1",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S1_Sensor_de_apertura_de_puerta.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "Detección de inclinación",
+        "Carcasa para activos industriales",
+        "Transmisión inalámbrica de eventos"
+      ],
+      "dimensiones": null,
+      "nombre": "Sensor inalámbrico de inclinación",
+      "proteccion": "IP67",
+      "referencia": "K9AT",
+      "sensores": [
+        "Inclinación"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/wireless-tilt-sensor-k9at",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/K9AT_Sensor_inalambrico_de_inclinacion.webp"
+    },
+    {
+      "alcance": "150 m",
+      "bateria": "5200mAh; 10 años",
+      "capacidades": [
+        "Detección de ocupación vehicular",
+        "Instalación en estacionamientos",
+        "Reporte inalámbrico de estado"
+      ],
+      "dimensiones": "Diámetro: 175mm × 38mm",
+      "nombre": "Baliza para estacionamiento",
+      "proteccion": "IP67",
+      "referencia": "S7",
+      "sensores": [
+        "Sensor geomagnético",
+        "Nivel de batería Temperatura",
+        "Mediciones reales",
+        "Ocupación vehicular"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/s7-smart-car-parking-beacon",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S7_Beacon_para_estacionamiento.webp"
+    },
+    {
+      "alcance": "100 m",
+      "bateria": "CR2450; 600mAh; 3 años",
+      "capacidades": [
+        "Alerta por retiro o manipulación",
+        "Seguimiento de activos",
+        "Comunicación Bluetooth de bajo consumo"
+      ],
+      "dimensiones": "30mm × 48mm × 8mm",
+      "nombre": "Baliza antimanipulación",
+      "proteccion": "IP65",
+      "referencia": "S8",
+      "sensores": [
+        "Sensor antimanipulación",
+        "Nivel de batería Temperatura Alerta antimanipulación",
+        "Mediciones reales"
+      ],
+      "tipo": "Baliza Bluetooth",
+      "url_dispositivo": "https://www.kkmcn.com/s8-anti-tamper-beacon",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/S8_Beacon_anti_manipulacion.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "BLE 5.0 y PHY codificada",
+        "Ethernet, Wi-Fi y opción celular",
+        "MQTT o HTTPS con almacenamiento local"
+      ],
+      "dimensiones": null,
+      "nombre": "Puerta de enlace Bluetooth para exteriores",
+      "proteccion": "IP54",
+      "referencia": "KG01",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/beacon-gateway",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG01_Gateway_Bluetooth_para_exteriores.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": null,
+      "capacidades": [
+        "Recepción de beacons BLE",
+        "Conectividad para instalación interior",
+        "Integración con servidor o nube"
+      ],
+      "dimensiones": null,
+      "nombre": "Puerta de enlace Bluetooth para interiores",
+      "proteccion": "No especificada",
+      "referencia": "KG02",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/gateway-kg02",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG02_Gateway_Bluetooth_para_interiores.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "DC 9 ~ 12v/1A o 802.3af POE",
+      "capacidades": [
+        "Diseño para entornos industriales",
+        "Adquisición de datos BLE",
+        "Conexión con plataformas IoT"
+      ],
+      "dimensiones": "220mm × 110mm × 75mm",
+      "nombre": "Puerta de enlace Bluetooth industrial",
+      "proteccion": "IP67, diseñada para exteriores",
+      "referencia": "KG03",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/bluetooth-gateway-kg03",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG03_Gateway_Bluetooth_industrial.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "alimentación USB (5V 1A)",
+      "capacidades": [
+        "Formato USB compacto",
+        "Recepción de dispositivos BLE",
+        "Integración local con equipo anfitrión"
+      ],
+      "dimensiones": "38mm × 24mm × 10.8mm",
+      "nombre": "Puerta de enlace Bluetooth USB",
+      "proteccion": null,
+      "referencia": "KG04",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/usb-gateway-kg04",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG04_Gateway_Bluetooth_USB.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "100V-240V AC 50/60Hz",
+      "capacidades": [
+        "Instalación directa a toma eléctrica",
+        "Escaneo de dispositivos BLE",
+        "Conectividad para espacios interiores"
+      ],
+      "dimensiones": "30mm × 30mm × 55mm(sin incluir el adaptador)",
+      "nombre": "Puerta de enlace IoT enchufable",
+      "proteccion": "IP67",
+      "referencia": "KG05",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/plug-gateway-kg05",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG05_Gateway_IoT_enchufable.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "100V-240V AC 50/60Hz; DC 5V/1A, 802.3af POE",
+      "capacidades": [
+        "Conectividad Wi-Fi y Ethernet",
+        "Recepción de beacons BLE",
+        "Integración mediante protocolos IoT"
+      ],
+      "dimensiones": "30mm × 30mm × 55mm(sin incluir el adaptador)",
+      "nombre": "Puerta de enlace WiFi y Ethernet",
+      "proteccion": "IP67",
+      "referencia": "KG06",
+      "sensores": [],
+      "tipo": "Puerta de enlace IoT",
+      "url_dispositivo": "https://www.kkmcn.com/wifi-ethernet-gateway-kg06",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/KG06_Gateway_WiFi_y_Ethernet.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "10000mAh; hasta 10 años",
+      "capacidades": [
+        "Alimentación solar",
+        "Conectividad LTE",
+        "Seguimiento de activos en exteriores"
+      ],
+      "dimensiones": "146×110x37mm",
+      "nombre": "Baliza LTE con energía solar",
+      "proteccion": "IP67",
+      "referencia": "L5",
+      "sensores": [],
+      "tipo": "Baliza LTE",
+      "url_dispositivo": "https://www.kkmcn.com/l5-solar-powered-lte-beacon",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/L5_Beacon_LTE_con_energia_solar.webp"
+    },
+    {
+      "alcance": null,
+      "bateria": "8500mAh batería desechable; 3000mAh batería recargable; 5 años",
+      "capacidades": [
+        "Conectividad celular LTE",
+        "Seguimiento de activos de amplio alcance",
+        "Operación independiente de puertas de enlace BLE"
+      ],
+      "dimensiones": "90×50x42mm",
+      "nombre": "Baliza LTE para seguimiento",
+      "proteccion": "IP67",
+      "referencia": "L3",
+      "sensores": [],
+      "tipo": "Baliza LTE",
+      "url_dispositivo": "https://www.kkmcn.com/lte-beacon-l3",
+      "url_imagen": "https://corpstudios.s3.us-east-1.amazonaws.com/cat%C3%A1logo/dispositivos/L3_Beacon_LTE_para_seguimiento.webp"
+    }
+  ]
+}

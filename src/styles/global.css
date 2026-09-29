@@ -17,3 +17,29 @@ body {
     transform: translateX(0);
   }
 }
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 5rem;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+}
+
+@theme {
+  --color-brand-50: #ecfaff;
+  --color-brand-100: #d0f3ff;
+  --color-brand-200: #a3e8ff;
+  --color-brand-300: #66d9ff;
+  --color-brand-400: #22c8ff;
+  --color-brand-500: #00befd;
+  --color-brand-600: #0092c7;
+  --color-brand-700: #0077a3;
+  --color-brand-800: #005f83;
+  --color-brand-900: #064a66;
+  --color-brand-950: #04324a;
+  --color-ink: #0a1620;
+}

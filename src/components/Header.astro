@@ -5,14 +5,15 @@
 <header
   id="main-header"
   class="fixed z-50 pointer-events-none transition-all duration-500 ease-out
-  bottom-5 inset-x-5 max-w-sm mx-auto /* Móvil: Píldora inferior separada de los bordes */
+  bottom-[max(1.25rem,env(safe-area-inset-bottom))] inset-x-5 max-w-sm mx-auto /* Móvil: Píldora inferior separada de los bordes */
   md:top-6 md:bottom-auto md:inset-x-0 md:max-w-5xl md:w-[95%] /* Escritorio (Inicial): Empieza a 24px del top */"
 >
   <div
     id="header-container"
     class="pointer-events-auto flex justify-between items-center transition-all duration-500 ease-out
-    bg-white/90 backdrop-blur-xl border border-slate-200/80 shadow-2xl rounded-[2rem] px-5 py-3 /* Móvil */
-    md:bg-transparent md:backdrop-blur-none md:border-transparent md:shadow-none md:px-0 /* Escritorio (Inicial) */"
+    bg-white/95 border border-slate-200/80 shadow-2xl
+    rounded-[4xl] px-5 py-3 /* Móvil */
+    md:bg-transparent md:border-transparent md:shadow-none md:px-0 /* Escritorio (Inicial) */"
   >
     <div
       class="hidden md:flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 pl-4"
@@ -29,15 +30,16 @@
     <nav
       id="desktop-nav"
       class="hidden md:flex items-center space-x-8 text-sm font-medium text-slate-700 transition-all duration-500 ease-out
-      bg-white/90 backdrop-blur-md px-8 py-2.5 rounded-full border border-slate-200/80 shadow-sm"
+      bg-white/95 px-8 py-2.5 rounded-full border border-slate-200/80 shadow-sm"
     >
-      <a href="#soluciones" class="hover:text-blue-600 transition-colors"
-        >Soluciones</a
+      <a
+        href="#enlace-azul-section"
+        class="hover:text-brand-700 transition-colors">Soluciones</a
       >
-      <a href="#hardware" class="hover:text-blue-600 transition-colors"
+      <a href="#hardware" class="hover:text-brand-700 transition-colors"
         >Hardware</a
       >
-      <a href="#contacto" class="hover:text-blue-600 transition-colors"
+      <a href="#contacto" class="hover:text-brand-700 transition-colors"
         >Contacto</a
       >
     </nav>
@@ -46,7 +48,7 @@
       <a
         id="header-btn"
         href="#contacto"
-        class="inline-block bg-[#111827] hover:bg-blue-600 text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all duration-500 shadow-md hover:shadow-lg hover:-translate-y-0.5"
+        class="inline-block bg-ink hover:bg-brand-700 text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all duration-500 shadow-md hover:shadow-lg hover:-translate-y-0.5"
       >
         Cotizar Kit
       </a>
@@ -57,7 +59,7 @@
     >
       <a
         href="#soluciones"
-        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+        class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
           class="w-5 h-5"
@@ -76,7 +78,7 @@
 
       <a
         href="#hardware"
-        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+        class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
           class="w-5 h-5"
@@ -95,7 +97,7 @@
 
       <a
         href="#contacto"
-        class="flex flex-col items-center gap-1.5 hover:text-blue-600 transition-colors"
+        class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
           class="w-5 h-5"
@@ -114,7 +116,7 @@
 
       <a
         href="#contacto"
-        class="flex flex-col items-center gap-1.5 text-blue-600"
+        class="flex flex-col items-center gap-1.5 text-brand-700"
       >
         <svg
           class="w-5 h-5"
@@ -141,95 +143,99 @@
     const headerLogo = document.getElementById("header-logo");
     const headerBtn = document.getElementById("header-btn");
 
-    window.addEventListener("scroll", () => {
-      if (window.innerWidth >= 768) {
-        if (window.scrollY > 40) {
-          // 1. Posición: Sube pero se queda a 5px del borde
-          mainHeader?.classList.remove("md:top-6");
-          mainHeader?.classList.add("md:top-[5px]");
+    // Recuerda el estado actual para no repetir el trabajo en cada evento de scroll
+    let scrolled = false;
 
-          // 2. Contenedor: Se vuelve barra blanca, con padding muy fino (py-1.5)
-          headerContainer?.classList.remove(
-            "md:bg-transparent",
-            "md:backdrop-blur-none",
-            "md:border-transparent",
-            "md:shadow-none",
-            "md:px-0",
-          );
-          headerContainer?.classList.add(
-            "md:bg-white/90",
-            "md:backdrop-blur-md",
-            "md:border-slate-200/80",
-            "md:shadow-md",
-            "md:px-2",
-            "md:py-1.5",
-            "md:rounded-full",
-          );
+    const onScroll = () => {
+      if (window.innerWidth < 768) return;
 
-          // 3. Píldora de Nav: Se hace invisible para fundirse y reduce su padding
-          desktopNav?.classList.remove(
-            "bg-white/90",
-            "backdrop-blur-md",
-            "border-slate-200/80",
-            "shadow-sm",
-            "py-2.5",
-          );
-          desktopNav?.classList.add(
-            "bg-transparent",
-            "border-transparent",
-            "shadow-none",
-            "py-1",
-          );
+      const shouldBeScrolled = window.scrollY > 40;
+      if (shouldBeScrolled === scrolled) return; // nada cambió, no hacemos nada
+      scrolled = shouldBeScrolled;
 
-          // 4. ADELGAZAMIENTO: Achicamos el logo y el botón para que la barra no sea gruesa
-          headerLogo?.classList.remove("h-8");
-          headerLogo?.classList.add("h-6"); // Logo más pequeño
+      if (scrolled) {
+        // 1. Posición: Sube pero se queda a 5px del borde
+        mainHeader?.classList.remove("md:top-6");
+        mainHeader?.classList.add("md:top-[5px]");
 
-          headerBtn?.classList.remove("py-2.5", "px-6");
-          headerBtn?.classList.add("py-2", "px-5", "text-[10px]"); // Botón más compacto
-        } else {
-          // RESET: Vuelve a su estado flotante separado
-          mainHeader?.classList.add("md:top-6");
-          mainHeader?.classList.remove("md:top-[5px]");
+        // 2. Contenedor: Se vuelve barra blanca, con padding muy fino (py-1.5)
+        headerContainer?.classList.remove(
+          "md:bg-transparent",
+          "md:border-transparent",
+          "md:shadow-none",
+          "md:px-0",
+        );
+        headerContainer?.classList.add(
+          "md:bg-white/95",
+          "md:border-slate-200/80",
+          "md:shadow-md",
+          "md:px-2",
+          "md:py-1.5",
+          "md:rounded-full",
+        );
 
-          headerContainer?.classList.add(
-            "md:bg-transparent",
-            "md:backdrop-blur-none",
-            "md:border-transparent",
-            "md:shadow-none",
-            "md:px-0",
-          );
-          headerContainer?.classList.remove(
-            "md:bg-white/90",
-            "md:backdrop-blur-md",
-            "md:border-slate-200/80",
-            "md:shadow-md",
-            "md:px-2",
-            "md:py-1.5",
-            "md:rounded-full",
-          );
+        // 3. Píldora de Nav: Se hace invisible para fundirse y reduce su padding
+        desktopNav?.classList.remove(
+          "bg-white/95",
+          "border-slate-200/80",
+          "shadow-sm",
+          "py-2.5",
+        );
+        desktopNav?.classList.add(
+          "bg-transparent",
+          "border-transparent",
+          "shadow-none",
+          "py-1",
+        );
 
-          desktopNav?.classList.add(
-            "bg-white/90",
-            "backdrop-blur-md",
-            "border-slate-200/80",
-            "shadow-sm",
-            "py-2.5",
-          );
-          desktopNav?.classList.remove(
-            "bg-transparent",
-            "border-transparent",
-            "shadow-none",
-            "py-1",
-          );
+        // 4. Adelgazamiento: logo y botón más pequeños
+        headerLogo?.classList.remove("h-8");
+        headerLogo?.classList.add("h-6");
 
-          headerLogo?.classList.add("h-8");
-          headerLogo?.classList.remove("h-6");
+        headerBtn?.classList.remove("py-2.5", "px-6");
+        headerBtn?.classList.add("py-2", "px-5", "text-[10px]");
+      } else {
+        // RESET: Vuelve a su estado flotante separado
+        mainHeader?.classList.add("md:top-6");
+        mainHeader?.classList.remove("md:top-[5px]");
 
-          headerBtn?.classList.add("py-2.5", "px-6");
-          headerBtn?.classList.remove("py-2", "px-5", "text-[10px]");
-        }
+        headerContainer?.classList.add(
+          "md:bg-transparent",
+          "md:border-transparent",
+          "md:shadow-none",
+          "md:px-0",
+        );
+        headerContainer?.classList.remove(
+          "md:bg-white/95",
+          "md:border-slate-200/80",
+          "md:shadow-md",
+          "md:px-2",
+          "md:py-1.5",
+          "md:rounded-full",
+        );
+
+        desktopNav?.classList.add(
+          "bg-white/95",
+          "border-slate-200/80",
+          "shadow-sm",
+          "py-2.5",
+        );
+        desktopNav?.classList.remove(
+          "bg-transparent",
+          "border-transparent",
+          "shadow-none",
+          "py-1",
+        );
+
+        headerLogo?.classList.add("h-8");
+        headerLogo?.classList.remove("h-6");
+
+        headerBtn?.classList.add("py-2.5", "px-6");
+        headerBtn?.classList.remove("py-2", "px-5", "text-[10px]");
       }
-    });
+    };
+
+    window.addEventListener("scroll", onScroll, { passive: true });
+    onScroll(); // por si recargas la página estando ya más abajo
   });
 </script>

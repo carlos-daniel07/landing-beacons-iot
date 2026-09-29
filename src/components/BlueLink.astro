@@ -2,135 +2,150 @@
 // src/components/BlueLink.astro (o el nombre de tu archivo)
 ---
 
-<section id="enlace-azul-section" class="h-[200vh] w-full relative z-20">
-  <div
-    class="sticky top-0 h-dvh w-full overflow-hidden flex flex-col md:flex-row items-center justify-around px-8 sm:px-16 md:px-24 bg-transparent"
-  >
-    <!-- Lado Izquierdo: Textos -->
-    <div class="max-w-md pointer-events-auto z-20">
-      <span
-        class="text-blue-600 font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4 block"
-        >Tecnología de rastreo</span
-      >
-      <h2
-        class="text-4xl md:text-5xl font-medium text-[#0f172a] tracking-tight leading-tight mb-6"
-      >
-        Enlace Azul
-      </h2>
-      <p class="text-lg text-slate-500 leading-relaxed mb-8">
-        Cada activo emite una señal cifrada que es capturada de forma
-        instantánea por nuestras puertas de enlace corporativas, enviando
-        analítica precisa directo a la nube.
-      </p>
-    </div>
-
-    <!-- Lado Derecho: Interfaz del Flujo de Datos (Light Theme) -->
+<section id="enlace-azul-section" class="relative z-20 h-[200vh] w-full">
+  <div class="sticky top-0 flex h-dvh w-full items-center overflow-hidden">
     <div
-      class="relative w-[350px] h-[500px] border border-slate-200 rounded-3xl bg-white p-6 flex flex-col justify-between overflow-hidden shadow-[0_20px_50px_rgba(15,23,42,0.07)] flex-shrink-0"
+      class="mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-6 pb-24 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:pb-0"
     >
-      <!-- NUBE Y DASHBOARD -->
+      <!-- Textos -->
+      <div class="pointer-events-auto z-20 w-full max-w-md">
+        <span
+          class="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-brand-700 md:text-xs"
+        >
+          Tecnología de rastreo
+        </span>
+        <h2
+          class="mb-3 text-3xl font-medium leading-tight tracking-tight text-ink text-balance sm:text-4xl lg:mb-6 lg:text-5xl"
+        >
+          Enlace Azul
+        </h2>
+        <p
+          class="text-sm leading-relaxed text-slate-500 sm:text-base lg:text-lg"
+        >
+          Enlace Azul permite monitorear, rastrear y ubicar activos de alto
+          valor en tiempo real. Las balizas BLE integradas en los activos
+          transmiten datos de posicionamiento para visualizar y controlar
+          procesos operativos y logísticos.
+        </p>
+      </div>
+
+      <!-- Wrapper que reserva el tamaño ya escalado -->
       <div
-        id="ea-cloud"
-        class="w-full bg-slate-50 border border-slate-100 rounded-xl p-4 z-10 shadow-sm"
+        class="relative h-[350px] w-[245px] shrink-0 self-center lg:h-[500px] lg:w-[350px] lg:self-auto"
       >
-        <div class="flex justify-between items-center mb-3">
-          <span
-            class="text-[10px] text-slate-400 uppercase font-bold tracking-wider"
-            >Dashboard IoT</span
+        <div
+          class="absolute left-0 top-0 flex h-[500px] w-[350px] origin-top-left scale-[0.7] flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.07)] lg:scale-100"
+        >
+          <!-- NUBE Y DASHBOARD -->
+          <div
+            id="ea-cloud"
+            class="w-full bg-slate-50 border border-slate-100 rounded-xl p-4 z-10 shadow-sm"
           >
-          <div class="flex items-center gap-1.5">
-            <span class="text-[8px] text-emerald-500 font-bold animate-pulse"
-              >EN LÍNEA</span
-            >
+            <div class="flex justify-between items-center mb-3">
+              <span
+                class="text-[10px] text-slate-400 uppercase font-bold tracking-wider"
+                >Dashboard IoT</span
+              >
+              <div class="flex items-center gap-1.5">
+                <span
+                  class="text-[8px] text-emerald-500 font-bold animate-pulse"
+                  >EN LÍNEA</span
+                >
+                <div
+                  class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]"
+                >
+                </div>
+              </div>
+            </div>
+
+            <!-- Feed de Telemetría -->
             <div
-              class="w-2 h-2 rounded-full bg-emerald-500 shadow-[0_0_5px_#10b981]"
+              class="bg-white rounded-lg p-3 border border-slate-100 font-mono text-[10px] space-y-2 shadow-sm"
+            >
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">ID Activo:</span>
+                <span
+                  class="text-slate-700 font-bold bg-slate-100 px-1.5 py-0.5 rounded"
+                  >S8-8902</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">Zona Actual:</span>
+                <span
+                  id="ea-zona"
+                  class="text-brand-700 font-bold transition-colors"
+                  >Almacenamiento</span
+                >
+              </div>
+              <div class="flex justify-between items-center">
+                <span class="text-slate-400">Distancia a GW:</span>
+                <span class="text-slate-800 font-bold"
+                  ><span id="ea-distancia" class="text-lg text-brand-700"
+                    >15.0</span
+                  > m</span
+                >
+              </div>
+            </div>
+          </div>
+
+          <!-- LÍNEA DE SEÑAL 2 -->
+          <div
+            class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
+          >
+            <div
+              id="ea-signal-up"
+              class="w-full h-20 bg-gradient-to-t from-transparent via-brand-500 to-transparent absolute opacity-0 -translate-y-full"
             >
             </div>
           </div>
-        </div>
 
-        <!-- Feed de Telemetría -->
-        <div
-          class="bg-white rounded-lg p-3 border border-slate-100 font-mono text-[10px] space-y-2 shadow-sm"
-        >
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">ID Activo:</span>
-            <span
-              class="text-slate-700 font-bold bg-slate-100 px-1.5 py-0.5 rounded"
-              >S8-8902</span
-            >
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Zona Actual:</span>
-            <span id="ea-zona" class="text-blue-600 font-bold transition-colors"
-              >Almacenamiento</span
-            >
-          </div>
-          <div class="flex justify-between items-center">
-            <span class="text-slate-400">Distancia a GW:</span>
-            <span class="text-slate-800 font-bold"
-              ><span id="ea-distancia" class="text-lg text-blue-600">15.0</span> m</span
-            >
-          </div>
-        </div>
-      </div>
-
-      <!-- LÍNEA DE SEÑAL 2 -->
-      <div
-        class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
-      >
-        <div
-          id="ea-signal-up"
-          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute opacity-0 -translate-y-full"
-        >
-        </div>
-      </div>
-
-      <!-- GATEWAY KG01 -->
-      <div
-        class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
-      >
-        <div
-          id="ea-gateway"
-          class="w-14 h-14 bg-white/90 backdrop-blur border border-slate-200 rounded-xl flex items-center justify-center shadow-md transition-colors"
-        >
-          <div class="w-6 h-6 border-2 border-slate-300 rounded-md"></div>
-        </div>
-        <span
-          class="absolute -right-24 top-5 text-[9px] text-slate-400 uppercase font-bold font-mono"
-          >Gateway KG01</span
-        >
-      </div>
-
-      <!-- LÍNEA DE SEÑAL 1 -->
-      <div
-        class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
-      >
-        <div
-          id="ea-signal-down"
-          class="w-full h-20 bg-gradient-to-t from-transparent via-blue-500 to-transparent absolute opacity-0 -translate-y-full"
-        >
-        </div>
-      </div>
-
-      <!-- ZONA DE TRÁNSITO Y ACTIVO -->
-      <div
-        class="w-full h-16 border-t border-dashed border-slate-300 mt-auto relative flex items-center"
-      >
-        <span
-          class="absolute -top-5 left-0 text-[9px] text-slate-400 uppercase font-bold font-mono"
-          >Línea de Producción</span
-        >
-        <div
-          id="ea-asset"
-          class="absolute left-0 w-24 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between px-2 shadow-sm"
-        >
-          <span class="text-[10px] text-slate-500 font-bold">Activo</span>
+          <!-- GATEWAY KG01 -->
           <div
-            id="ea-asset-beacon"
-            class="w-3 h-3 bg-blue-100 border border-blue-300 rounded-full flex items-center justify-center"
+            class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
           >
-            <div class="w-1 h-1 bg-blue-500 rounded-full"></div>
+            <div
+              id="ea-gateway"
+              class="w-14 h-14 bg-white/95 border border-slate-200 rounded-xl flex items-center justify-center shadow-md transition-colors"
+            >
+              <div class="w-6 h-6 border-2 border-slate-300 rounded-md"></div>
+            </div>
+            <span
+              class="absolute -right-24 top-5 text-[9px] text-slate-400 uppercase font-bold font-mono"
+              >Gateway KG01</span
+            >
+          </div>
+
+          <!-- LÍNEA DE SEÑAL 1 -->
+          <div
+            class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
+          >
+            <div
+              id="ea-signal-down"
+              class="w-full h-20 bg-gradient-to-t from-transparent via-brand-500 to-transparent absolute opacity-0 -translate-y-full"
+            >
+            </div>
+          </div>
+
+          <!-- ZONA DE TRÁNSITO Y ACTIVO -->
+          <div
+            class="w-full h-16 border-t border-dashed border-slate-300 mt-auto relative flex items-center"
+          >
+            <span
+              class="absolute -top-5 left-0 text-[9px] text-slate-400 uppercase font-bold font-mono"
+              >Línea de Producción</span
+            >
+            <div
+              id="ea-asset"
+              class="absolute left-0 w-24 h-10 bg-slate-50 border border-slate-200 rounded-lg flex items-center justify-between px-2 shadow-sm"
+            >
+              <span class="text-[10px] text-slate-500 font-bold">Activo</span>
+              <div
+                id="ea-asset-beacon"
+                class="w-3 h-3 bg-brand-100 border border-brand-300 rounded-full flex items-center justify-center"
+              >
+                <div class="w-1 h-1 bg-brand-500 rounded-full"></div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -176,15 +191,16 @@
 
             if (telemetria.distancia > 10) {
               textoZona.innerText = "Almacenamiento";
-              textoZona.className = "text-blue-600 font-bold transition-colors";
+              textoZona.className =
+                "text-brand-700 font-bold transition-colors";
               textoDistancia.className =
-                "text-lg text-blue-600 transition-colors";
+                "text-lg text-brand-700 transition-colors";
             } else if (telemetria.distancia > 5) {
               textoZona.innerText = "Pasillo de Tránsito";
               textoZona.className =
-                "text-purple-600 font-bold transition-colors";
+                "text-slate-700 font-bold transition-colors";
               textoDistancia.className =
-                "text-lg text-purple-600 transition-colors";
+                "text-lg text-slate-700 transition-colors";
             } else {
               textoZona.innerText = "Bahía de Carga";
               textoZona.className =
@@ -199,9 +215,9 @@
       .to(
         "#ea-asset-beacon",
         {
-          backgroundColor: "#3b82f6",
-          borderColor: "#2563eb",
-          boxShadow: "0 0 10px rgba(59, 130, 246, 0.4)",
+          backgroundColor: "#00BEFD",
+          borderColor: "#0077a3",
+          boxShadow: "0 0 10px rgba(0, 190, 253, 0.45)",
           duration: 0.2,
           repeat: 10,
           yoyo: true,
@@ -217,9 +233,9 @@
       .to(
         "#ea-gateway",
         {
-          borderColor: "#3b82f6",
-          backgroundColor: "#eff6ff", // blue-50 para indicar activación en tema claro
-          boxShadow: "0 4px 15px rgba(59, 130, 246, 0.2)",
+          borderColor: "#00BEFD",
+          backgroundColor: "#ecfaff",
+          boxShadow: "0 4px 15px rgba(0, 190, 253, 0.25)",
           duration: 0.2,
           repeat: 9,
           yoyo: true,

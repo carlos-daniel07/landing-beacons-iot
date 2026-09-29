@@ -4,32 +4,37 @@
 
 <section
   id="beaconnav-section"
-  class="min-h-dvh w-full relative z-20 bg-transparent flex items-center py-20"
+  class="relative z-20 flex min-h-dvh w-full items-center bg-transparent py-16 lg:py-24"
 >
   <div
-    class="w-full max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-around px-8 sm:px-16 md:px-24 gap-12"
+    class="mx-auto flex w-full max-w-7xl flex-col items-start gap-10 px-6 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16"
   >
     <!-- Lado Izquierdo: Textos -->
-    <div class="max-w-md pointer-events-auto z-20">
+    <div class="pointer-events-auto z-20 w-full max-w-md">
       <span
-        class="text-purple-600 font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4 block"
+        class="text-brand-700 font-mono text-[10px] md:text-xs tracking-[0.2em] uppercase mb-4 block"
         >Marketing Inteligente</span
       >
       <h2
-        class="text-4xl md:text-5xl font-medium text-[#0f172a] tracking-tight leading-tight mb-6"
+        class="mb-4 text-3xl font-medium leading-tight tracking-tight text-ink text-balance sm:text-4xl lg:mb-6 lg:text-5xl"
       >
         BeaconNAV
       </h2>
-      <p class="text-lg text-slate-500 leading-relaxed mb-8">
-        Llega al cliente en el momento exacto. Nuestras campañas de proximidad
-        envían notificaciones push directamente al smartphone cuando el usuario
-        entra en el radio del sensor.
+      <p class="text-base leading-relaxed text-slate-500 lg:text-lg">
+        Navegación precisa en interiores y experiencias inteligentes basadas en
+        proximidad. BeaconNAV es una aplicación móvil desarrollada por Beacons
+        IoT Technologies para ayudar a los usuarios a ubicarse con precisión en
+        edificios, bodegas, centros comerciales, hospitales y aeropuertos.
+        Utiliza balizas BLE en espacios donde la señal GPS no funciona
+        correctamente. La aplicación también permite enviar notificaciones
+        contextuales basadas en proximidad para mejorar la interacción con los
+        usuarios.
       </p>
     </div>
 
     <!-- Lado Derecho: Interfaz del Smartphone (Light Theme) -->
     <div
-      class="relative w-[300px] h-[600px] border-[8px] border-slate-100 rounded-[3rem] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.1)] flex flex-col items-center justify-start overflow-hidden flex-shrink-0"
+      class="relative h-150 w-[min(300px,100%)] self-center lg:self-auto border-8 border-slate-100 rounded-[3rem] bg-white shadow-[0_20px_50px_rgba(15,23,42,0.1)] flex flex-col items-center justify-start overflow-hidden shrink-0"
     >
       <!-- El Notch (Cámara superior del celular) -->
       <div
@@ -70,7 +75,7 @@
 
         <!-- Pasillo (Separador) -->
         <div class="w-full h-8 flex items-center justify-center my-1 relative">
-          <div class="w-full h-[2px] border-t-2 border-dashed border-slate-300">
+          <div class="w-full h-0.5 border-t-2 border-dashed border-slate-300">
           </div>
           <span
             class="absolute text-[9px] bg-white px-3 text-slate-400 tracking-widest uppercase font-bold"
@@ -86,7 +91,7 @@
           </div>
 
           <div
-            class="flex-[1.2] bg-purple-50 rounded-2xl border border-purple-200 relative flex items-center justify-center shadow-inner"
+            class="flex-[1.2] bg-brand-50 rounded-2xl border border-brand-200 relative flex items-center justify-center shadow-inner"
           >
             <div
               id="proximity-radar"
@@ -94,23 +99,23 @@
             >
               <!-- Anillos del Radar -->
               <div
-                class="w-28 h-28 border-[1.5px] border-purple-400/40 rounded-full animate-ping absolute"
+                class="w-28 h-28 border-[1.5px] border-brand-500/40 rounded-full animate-ping absolute"
               >
               </div>
               <div
-                class="w-16 h-16 border-[1.5px] border-purple-400/60 rounded-full animate-ping absolute"
+                class="w-16 h-16 border-[1.5px] border-brand-500/60 rounded-full animate-ping absolute"
                 style="animation-delay: 0.2s;"
               >
               </div>
               <!-- Punto central del Beacon -->
               <div
-                class="w-6 h-6 rounded-full flex items-center justify-center bg-purple-500 shadow-[0_0_15px_rgba(168,85,247,0.4)]"
+                class="w-6 h-6 rounded-full flex items-center justify-center bg-brand-500 hadow-[0_0_15px_rgba(0,190,253,0.45)]"
               >
                 <div class="w-2 h-2 bg-white rounded-full"></div>
               </div>
             </div>
             <span
-              class="absolute bottom-2 right-2 text-[8px] font-bold text-purple-400 uppercase tracking-widest"
+              class="absolute bottom-2 right-2 text-[8px] font-bold text-brand-700 uppercase tracking-widest"
               >Tu Tienda</span
             >
           </div>
@@ -130,10 +135,10 @@
       <!-- NOTIFICACIÓN PUSH TIPO APPLE -->
       <div
         id="push-notification"
-        class="w-[90%] bg-white/95 backdrop-blur-xl border border-slate-100 p-4 rounded-2xl absolute top-12 -translate-y-[200%] z-20 flex items-center space-x-4 shadow-[0_15px_40px_rgba(15,23,42,0.12)]"
+        class="w-[90%] bg-white/95 border border-slate-100 p-4 rounded-2xl absolute top-12 translate-y-[-200%] z-20 flex items-center space-x-4 shadow-[0_15px_40px_rgba(15,23,42,0.12)]"
       >
         <div
-          class="w-10 h-10 bg-gradient-to-tr from-purple-500 to-blue-500 rounded-xl flex-shrink-0 flex items-center justify-center text-white font-bold text-[11px] shadow-md"
+          class="w-10 h-10 bg-linear-to-tr from-brand-700 to-brand-900 rounded-xl shrink-0 flex items-center justify-center text-white font-bold text-[11px] shadow-md"
         >
           BiT
         </div>

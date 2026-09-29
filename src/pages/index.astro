@@ -6,19 +6,25 @@ import BeaconNav from "../components/BeaconNav.astro";
 import Preloader from "../components/Preloader.astro";
 import Hardware from "../components/Hardware.astro";
 import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import ProductModal from "../components/ProductModal.astro";
 ---
 
 <html lang="es">
   <head>
     <meta charset="utf-8" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta name="viewport" content="width=device-width" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    />
     <title>Beacons IoT Technologies</title>
   </head>
 
   <body
-    class="m-0 p-0 bg-slate-50 text-slate-900 selection:bg-blue-500 selection:text-white"
+    class="m-0 p-0 bg-slate-50 text-slate-900 selection:bg-brand-500 selection:text-ink"
   >
+    <Preloader />
     <div class="fixed inset-0 z-0 pointer-events-none">
       <Scene client:load />
     </div>
@@ -27,36 +33,48 @@ import Header from "../components/Header.astro";
 
     <main class="relative z-10 w-full">
       <section
-        class="h-dvh w-full flex flex-col justify-center items-start px-8 sm:px-16 md:px-24 pointer-events-none"
+        id="hero"
+        class="min-h-dvh w-full flex items-center pt-24 pb-32 md:py-0 pointer-events-none"
       >
-        <div class="max-w-4xl pointer-events-auto">
-          <span
-            class="text-blue-600 font-bold text-[10px] md:text-xs tracking-[0.2em] uppercase mb-5 block"
-          >
-            Tecnología IoT desde Medellín, Colombia
-          </span>
+        <div class="mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16">
+          <div class="max-w-4xl pointer-events-auto">
+            <span
+              class="mb-5 block text-[11px] font-bold uppercase tracking-[0.2em] text-brand-700 md:text-xs"
+            >
+              Tecnología IoT desde Medellín, Colombia
+            </span>
 
-          <h1
-            class="text-5xl md:text-6xl lg:text-[5rem] font-medium text-[#0f172a] tracking-tight leading-[1.05] mb-8"
-          >
-            Soluciones IoT y <br />
-            localización de <br />
-            activos en <br />
-            Colombia.
-          </h1>
+            <h1
+              class="mb-6 text-4xl font-medium leading-[1.05] tracking-tight text-ink text-balance sm:text-5xl md:mb-8 lg:text-6xl xl:text-7xl 2xl:text-[5rem]"
+            >
+              Soluciones IoT y <br class="hidden lg:block" />
+              localización de <br class="hidden lg:block" />
+              activos en <br class="hidden lg:block" />
+              Colombia.
+            </h1>
 
-          <p
-            class="text-lg md:text-xl text-slate-500 max-w-2xl leading-relaxed"
-          >
-            Creamos sistemas RTLS de localización en tiempo real, trazabilidad y
-            automatización con tecnología Bluetooth Low Energy.
-          </p>
+            <p
+              class="max-w-lg text-base leading-relaxed text-slate-500 sm:text-lg md:text-xl"
+            >
+              Creamos sistemas RTLS de localización en tiempo real, trazabilidad
+              y automatización con tecnología Bluetooth Low Energy.
+            </p>
+          </div>
         </div>
       </section>
 
-      <BlueLink />
-      <BeaconNav />
-      <Hardware />
+      <div id="blue-link">
+        <BlueLink />
+      </div>
+      <div id="beacon-nav">
+        <BeaconNav />
+      </div>
+      <div id="hardware">
+        <Hardware />
+      </div>
     </main>
+
+    <Footer />
+    <ProductModal />
   </body>
 </html>

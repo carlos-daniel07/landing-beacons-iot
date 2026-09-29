@@ -2,120 +2,55 @@
 // src/components/Catalogo.astro
 import Filters from "./Filters.astro";
 import ProductCard from "./ProductCard.astro";
-import ProductModal from "./ProductModal.astro";
-
-const data = {
-  catalog: "activos",
-  productos: [
-    {
-      alcance: "80 meters",
-      bateria: "40mAh; 18 months",
-      capacidades: [
-        "Etiqueta imprimible",
-        "tecnología UHF NFC y BLE",
-        "Alcance de transmisión de hasta 80 m",
-      ],
-      dimensiones: "100mm×150mmx1.5mm",
-      nombre: "Etiqueta imprimible para activos",
-      referencia: "C6",
-      sensores: [],
-      tipo: "Beacon Bluetooth",
-      url_imagen: "/img-1.png",
-    },
-    {
-      alcance: "80 meters",
-      bateria: "40mAh; 18 months",
-      capacidades: [
-        "Espesor aproximado de 1,5 mm",
-        "Peso aproximado de 4 g",
-        "activación mediante UHF NFC",
-      ],
-      dimensiones: "58mm×68mmx1.5mm",
-      nombre: "Etiqueta ultradelgada de papel",
-      referencia: "C5",
-      sensores: [],
-      tipo: "Beacon Bluetooth",
-      url_imagen: "/img-2.png",
-    },
-    {
-      alcance: "100 meters",
-      bateria: "Coin battery; 4 Months",
-      capacidades: [
-        "Peso aproximado de 1,2 g",
-        "protección IP67",
-        "batería CR2032 reemplazable",
-      ],
-      dimensiones: "20*28.8*2.2mm",
-      nombre: "Tag BLE ultracompacto",
-      referencia: "C2",
-      sensores: [],
-      tipo: "Beacon Bluetooth",
-      url_imagen: "/img-3.png",
-    },
-    {
-      alcance: "100 meters",
-      bateria: "CR2032; 210mAh; 16 months",
-      capacidades: [
-        "Uso como llavero o pulsera",
-        "protección IP63",
-        "autonomía indicada de hasta 16 meses",
-      ],
-      dimensiones: "dia 32.2mm*8mm",
-      nombre: "Tag wearable multipropósito",
-      referencia: "W1",
-      sensores: ["Accelerometer", "Battery level", "Temperature"],
-      tipo: "Beacon Bluetooth",
-      url_imagen: "/img-4.png",
-    },
-    // Pega aquí el resto de tus 32 dispositivos...
-  ],
-};
+import data from "../data/catalog.json";
 ---
 
 <section
   id="catalogo-section"
-  class="relative min-h-screen w-full bg-[#f8fafc] z-20 py-24 px-6 md:px-12 lg:px-24"
+  class="relative z-20 w-full bg-[#f8fafc] py-16 md:py-24"
 >
-  <div class="mb-10 relative z-10 max-w-4xl">
-    <div class="text-slate-400 text-sm mb-6 flex gap-2">
-      <a href="/" class="hover:text-blue-600 transition-colors">Inicio</a>
-      <span>/</span>
-      <span class="text-slate-600">Catálogo</span>
+  <div class="mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16">
+    <div class="mb-10 max-w-3xl">
+      <span
+        class="mb-3 block text-xs font-bold uppercase tracking-widest text-brand-700"
+        >CATÁLOGO BIT</span
+      >
+      <h2
+        class="mb-4 text-3xl font-medium tracking-tight text-ink text-balance sm:text-5xl lg:text-6xl"
+      >
+        Beacons, sensores y gateways IoT
+      </h2>
+      <p class="text-base text-slate-500 sm:text-lg">
+        Explora beacons BLE, sensores, gateways IoT y dispositivos KKM para
+        localización y monitoreo. Solicita asesoría con BIT en Colombia.
+      </p>
     </div>
 
-    <span
-      class="text-blue-600 font-bold text-xs tracking-widest uppercase mb-3 block"
-      >CATÁLOGO BIT</span
+    <Filters />
+
+    <div class="mb-6">
+      <span id="results-count" class="text-sm font-medium text-slate-500">
+        {data.productos.length} dispositivos encontrados
+      </span>
+    </div>
+
+    <div
+      class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4"
+      id="products-grid"
     >
-    <h1
-      class="text-5xl md:text-6xl font-medium text-[#111827] tracking-tight mb-6"
-    >
-      Beacons, sensores y gateways IoT
-    </h1>
-    <p class="text-slate-500 text-lg">
-      Explora beacons BLE, sensores, gateways IoT y dispositivos KKM para
-      localización y monitoreo. Solicita asesoría con BIT en Colombia.
-    </p>
+      {data.productos.map((producto) => <ProductCard producto={producto} />)}
+    </div>
+
+    <div class="mt-12 flex justify-center">
+      <button
+        id="show-more-products"
+        type="button"
+        class="hidden cursor-pointer rounded-full border border-slate-300 px-8 py-3 text-sm font-semibold text-slate-700 transition-all duration-200 hover:-translate-y-0.5 hover:border-brand-700 hover:bg-brand-700 hover:text-white hover:shadow-md active:translate-y-0 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-500 focus-visible:ring-offset-2"
+      >
+        Mostrar más
+      </button>
+    </div>
   </div>
-
-  <!-- Componente de Filtros -->
-  <Filters />
-
-  <div class="mb-6 relative z-10">
-    <span id="results-count" class="text-sm text-slate-500 font-medium"
-      >{data.productos.length} dispositivos encontrados</span
-    >
-  </div>
-
-  <!-- Cuadrícula de Tarjetas -->
-  <div
-    class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8 relative z-10"
-  >
-    {data.productos.map((producto) => <ProductCard producto={producto} />)}
-  </div>
-
-  <!-- Componente de Modal -->
-  <ProductModal />
 </section>
 
 <script>
@@ -131,6 +66,9 @@ const data = {
     ) as HTMLSelectElement;
     const filterBtns = document.querySelectorAll(".filter-btn");
     const resultsCount = document.getElementById("results-count");
+    const showMoreButton = document.getElementById("show-more-products");
+    const pageSize = 4;
+    let visibleLimit = pageSize;
 
     // Lógica de Filtros
     const applyFilters = () => {
@@ -138,10 +76,10 @@ const data = {
       const selectTerm = categorySelect.value;
       const activeBtn =
         document
-          .querySelector(".filter-btn.bg-blue-50")
+          .querySelector(".filter-btn.bg-brand-50")
           ?.getAttribute("data-filter") || "Todos";
 
-      let count = 0;
+      const matchingCards: HTMLElement[] = [];
 
       cards.forEach((card) => {
         const rawData = card.getAttribute("data-producto");
@@ -155,20 +93,40 @@ const data = {
         const matchBtn = activeBtn === "Todos" || data.tipo === activeBtn;
 
         if (matchSearch && matchSelect && matchBtn) {
-          card.style.display = "flex";
-          count++;
+          matchingCards.push(card);
         } else {
           card.style.display = "none";
         }
       });
 
+      matchingCards.forEach((card, index) => {
+        card.style.display = index < visibleLimit ? "flex" : "none";
+      });
+
       if (resultsCount) {
+        const count = matchingCards.length;
         resultsCount.innerText = `${count} dispositivo${count !== 1 ? "s" : ""} encontrado${count !== 1 ? "s" : ""}`;
       }
+
+      showMoreButton?.classList.toggle(
+        "hidden",
+        matchingCards.length <= visibleLimit,
+      );
     };
 
-    searchInput?.addEventListener("input", applyFilters);
-    categorySelect?.addEventListener("change", applyFilters);
+    const resetAndApplyFilters = () => {
+      visibleLimit = pageSize;
+      applyFilters();
+    };
+
+    searchInput?.addEventListener("input", resetAndApplyFilters);
+    categorySelect?.addEventListener("change", resetAndApplyFilters);
+    showMoreButton?.addEventListener("click", () => {
+      visibleLimit += pageSize;
+      applyFilters();
+    });
+
+    applyFilters();
 
     filterBtns.forEach((btn) => {
       btn.addEventListener("click", (e) => {
@@ -177,9 +135,9 @@ const data = {
 
         filterBtns.forEach((b) => {
           b.classList.remove(
-            "border-blue-600",
-            "text-blue-600",
-            "bg-blue-50",
+            "border-brand-700",
+            "text-brand-700",
+            "bg-brand-50",
             "font-bold",
           );
           b.classList.add("border-slate-200", "text-slate-600", "font-medium");
@@ -191,14 +149,14 @@ const data = {
           "font-medium",
         );
         target.classList.add(
-          "border-blue-600",
-          "text-blue-600",
-          "bg-blue-50",
+          "border-brand-700",
+          "text-brand-700",
+          "bg-brand-50",
           "font-bold",
         );
 
         if (categorySelect) categorySelect.value = filterVal;
-        applyFilters();
+        resetAndApplyFilters();
       });
     });
 
@@ -237,7 +195,7 @@ const data = {
         mFeatures.innerHTML = "";
         if (p.capacidades && p.capacidades.length > 0) {
           p.capacidades.forEach((cap: string) => {
-            mFeatures.innerHTML += `<li class="flex items-start gap-2"><div class="w-1.5 h-1.5 bg-[#4F46E5] rounded-full flex-shrink-0 mt-1.5"></div>${cap}</li>`;
+            mFeatures.innerHTML += `<li class="flex items-start gap-2"><div class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0 mt-1.5"></div>${cap}</li>`;
           });
         }
       }
@@ -260,9 +218,9 @@ const data = {
 
             const relCard = document.createElement("div");
             relCard.className =
-              "bg-white border border-slate-200 rounded-lg p-5 cursor-pointer hover:border-[#4F46E5] hover:shadow-md transition-all flex flex-col justify-center min-h-[85px]";
+              "bg-white border border-slate-200 rounded-lg p-5 cursor-pointer over:border-brand-500 hover:shadow-md transition-all flex flex-col justify-center min-h-[85px]";
             relCard.innerHTML = `
-                <h4 class="text-[13px] font-medium text-[#111827] mb-1 leading-tight">${otherP.nombre}</h4>
+                <h4 class="text-[13px] font-medium text-ink mb-1 leading-tight">${otherP.nombre}</h4>
                 <span class="text-[11px] text-slate-500 font-mono">KKM · ${otherP.referencia}</span>
             `;
 
