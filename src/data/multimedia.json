@@ -1,0 +1,24 @@
+{
+  "videos": [
+    {
+      "titulo": "Somos Beacons IoT Technologies",
+      "categoria": "Conócenos",
+      "url": "https://corpstudios.s3.us-east-1.amazonaws.com/Somos.mp4"
+    },
+    {
+      "titulo": "Soluciones IoT",
+      "categoria": "Tecnología conectada",
+      "url": "https://corpstudios.s3.us-east-1.amazonaws.com/video.mp4"
+    },
+    {
+      "titulo": "Beacons IoT Technologies",
+      "categoria": "Localización inteligente",
+      "url": "https://corpstudios.s3.us-east-1.amazonaws.com/Beacons+Iot+Technologies.mp4"
+    },
+    {
+      "titulo": "BeaconNAV Canvas",
+      "categoria": "Navegación indoor",
+      "url": "https://corpstudios.s3.us-east-1.amazonaws.com/BeaconNav+Canvas.mp4"
+    }
+  ]
+}

@@ -1,8 +1,7 @@
 ---
-// src/components/Catalogo.astro
 import Filters from "./Filters.astro";
 import ProductCard from "./ProductCard.astro";
-import data from "../data/catalog.json";
+import { productos } from "../lib/products";
 ---
 
 <section
@@ -10,7 +9,7 @@ import data from "../data/catalog.json";
   class="relative z-20 w-full bg-[#f8fafc] py-16 md:py-24"
 >
   <div class="mx-auto w-full max-w-7xl px-6 sm:px-10 lg:px-16">
-    <div class="mb-10 max-w-3xl">
+    <div id="hardware-navigation-target" class="mb-10 max-w-3xl">
       <span
         class="mb-3 block text-xs font-bold uppercase tracking-widest text-brand-700"
         >CATÁLOGO BIT</span
@@ -30,15 +29,16 @@ import data from "../data/catalog.json";
 
     <div class="mb-6">
       <span id="results-count" class="text-sm font-medium text-slate-500">
-        {data.productos.length} dispositivos encontrados
+        {productos.length} dispositivos encontrados
       </span>
     </div>
 
     <div
       class="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3 lg:gap-8 xl:grid-cols-4"
       id="products-grid"
+      data-site-url={Astro.site?.origin}
     >
-      {data.productos.map((producto) => <ProductCard producto={producto} />)}
+      {productos.map((producto) => <ProductCard producto={producto} />)}
     </div>
 
     <div class="mt-12 flex justify-center">
@@ -54,6 +54,12 @@ import data from "../data/catalog.json";
 </section>
 
 <script>
+  import {
+    getProductHash,
+    getProductPath,
+    type Producto,
+  } from "../lib/products";
+
   document.addEventListener("DOMContentLoaded", () => {
     const cards = document.querySelectorAll(
       ".product-card",
@@ -70,7 +76,7 @@ import data from "../data/catalog.json";
     const pageSize = 4;
     let visibleLimit = pageSize;
 
-    // Lógica de Filtros
+    // Aplicamos filtros y límite en la misma pasada para que "Mostrar más" respete la búsqueda.
     const applyFilters = () => {
       const searchTerm = searchInput.value.toLowerCase();
       const selectTerm = categorySelect.value;
@@ -84,7 +90,7 @@ import data from "../data/catalog.json";
       cards.forEach((card) => {
         const rawData = card.getAttribute("data-producto");
         if (!rawData) return;
-        const data = JSON.parse(rawData);
+        const data = JSON.parse(rawData) as Producto;
 
         const matchSearch =
           data.nombre.toLowerCase().includes(searchTerm) ||
@@ -160,11 +166,18 @@ import data from "../data/catalog.json";
       });
     });
 
-    // Lógica del Modal y Relacionados
+    // El mapa por URL permite abrir el producto desde un enlace compartido.
     const modal = document.getElementById("simple-modal");
     const backdrop = document.getElementById("modal-backdrop");
     const contentBox = document.getElementById("modal-content-box");
     const btnClose = document.getElementById("close-modal-btn");
+    const whatsappLink = document.getElementById(
+      "m-whatsapp-link",
+    ) as HTMLAnchorElement | null;
+    const copyLinkButton = document.getElementById(
+      "m-copy-link-btn",
+    ) as HTMLButtonElement | null;
+    const copyStatus = document.getElementById("m-copy-status");
 
     const mImg = document.getElementById("m-img") as HTMLImageElement;
     const mBadge = document.getElementById("m-badge");
@@ -178,8 +191,26 @@ import data from "../data/catalog.json";
     const mRelatedSection = document.getElementById("m-related-section");
     const mRelatedGrid = document.getElementById("m-related-grid");
 
-    const populateModal = (p: any) => {
+    const productsByUrl = new Map<string, Producto>();
+    const siteUrl =
+      document
+        .getElementById("products-grid")
+        ?.getAttribute("data-site-url") || window.location.origin;
+    cards.forEach((card) => {
+      const rawData = card.getAttribute("data-producto");
+      const productUrl = card.dataset.productUrl;
+      if (rawData && productUrl) {
+        productsByUrl.set(productUrl, JSON.parse(rawData) as Producto);
+      }
+    });
+
+    const getProductUrl = (p: Producto) => {
+      return new URL(getProductPath(p.slug), siteUrl);
+    };
+
+    const populateModal = (p: Producto) => {
       if (mImg) mImg.src = p.url_imagen;
+      if (mImg) mImg.alt = p.nombre;
       if (mBadge)
         mBadge.innerText =
           p.tipo === "Beacon Bluetooth"
@@ -192,26 +223,35 @@ import data from "../data/catalog.json";
       if (mDim) mDim.innerText = p.dimensiones || "N/A";
 
       if (mFeatures) {
-        mFeatures.innerHTML = "";
-        if (p.capacidades && p.capacidades.length > 0) {
-          p.capacidades.forEach((cap: string) => {
-            mFeatures.innerHTML += `<li class="flex items-start gap-2"><div class="w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0 mt-1.5"></div>${cap}</li>`;
-          });
-        }
+        mFeatures.replaceChildren();
+        p.capacidades.forEach((cap) => {
+          const item = document.createElement("li");
+          item.className = "flex items-start gap-2";
+          const marker = document.createElement("div");
+          marker.className =
+            "w-1.5 h-1.5 bg-brand-500 rounded-full flex-shrink-0 mt-1.5";
+          const text = document.createElement("span");
+          text.textContent = cap;
+          item.append(marker, text);
+          mFeatures.appendChild(item);
+        });
       }
 
+      if (whatsappLink) {
+        const productUrl = getProductUrl(p).href;
+        const message = `Hola, quisiera recibir información sobre ${p.nombre} (referencia ${p.referencia}). Lo vi aquí: ${productUrl}`;
+        whatsappLink.href = `https://wa.me/573146148505?text=${encodeURIComponent(message)}`;
+      }
+      if (copyStatus) copyStatus.textContent = "";
+
       if (mRelatedGrid && mRelatedSection) {
-        mRelatedGrid.innerHTML = "";
+        mRelatedGrid.replaceChildren();
         let relatedCount = 0;
 
-        cards.forEach((card) => {
-          const rawData = card.getAttribute("data-producto");
-          if (!rawData) return;
-          const otherP = JSON.parse(rawData);
-
+        productsByUrl.forEach((otherP) => {
           if (
             otherP.tipo === p.tipo &&
-            otherP.referencia !== p.referencia &&
+            otherP.slug !== p.slug &&
             relatedCount < 3
           ) {
             relatedCount++;
@@ -219,13 +259,16 @@ import data from "../data/catalog.json";
             const relCard = document.createElement("div");
             relCard.className =
               "bg-white border border-slate-200 rounded-lg p-5 cursor-pointer over:border-brand-500 hover:shadow-md transition-all flex flex-col justify-center min-h-[85px]";
-            relCard.innerHTML = `
-                <h4 class="text-[13px] font-medium text-ink mb-1 leading-tight">${otherP.nombre}</h4>
-                <span class="text-[11px] text-slate-500 font-mono">KKM · ${otherP.referencia}</span>
-            `;
+            const title = document.createElement("h4");
+            title.className = "text-[13px] font-medium text-ink mb-1 leading-tight";
+            title.textContent = otherP.nombre;
+            const reference = document.createElement("span");
+            reference.className = "text-[11px] text-slate-500 font-mono";
+            reference.textContent = `KKM · ${otherP.referencia}`;
+            relCard.append(title, reference);
 
             relCard.addEventListener("click", () => {
-              populateModal(otherP);
+              openProduct(otherP, true);
               if (contentBox) contentBox.scrollTop = 0;
             });
 
@@ -237,29 +280,35 @@ import data from "../data/catalog.json";
       }
     };
 
-    cards.forEach((card) => {
-      card.addEventListener("click", () => {
-        const rawData = card.getAttribute("data-producto");
-        if (!rawData) return;
-        const p = JSON.parse(rawData);
+    const showModal = () => {
+      if (!modal) return;
+      modal.classList.remove("hidden");
+      modal.classList.add("flex");
+      setTimeout(() => {
+        backdrop?.classList.remove("opacity-0");
+        contentBox?.classList.remove("opacity-0", "scale-95");
+        contentBox?.classList.add("opacity-100", "scale-100");
+      }, 10);
+    };
 
-        populateModal(p);
+    const openProduct = (p: Producto, updateUrl = false) => {
+      populateModal(p);
+      showModal();
 
-        if (modal) {
-          modal.classList.remove("hidden");
-          modal.classList.add("flex");
-          setTimeout(() => {
-            if (backdrop) backdrop.classList.remove("opacity-0");
-            if (contentBox) {
-              contentBox.classList.remove("opacity-0", "scale-95");
-              contentBox.classList.add("opacity-100", "scale-100");
-            }
-          }, 10);
+      if (updateUrl) {
+        const url = getProductUrl(p);
+        if (window.location.hash !== url.hash) {
+          const state = { productModal: true };
+          if (history.state?.productModal) {
+            history.replaceState(state, "", url);
+          } else {
+            history.pushState(state, "", url);
+          }
         }
-      });
-    });
+      }
+    };
 
-    const closeModal = () => {
+    const hideModal = () => {
       if (backdrop) backdrop.classList.add("opacity-0");
       if (contentBox) {
         contentBox.classList.remove("opacity-100", "scale-100");
@@ -273,7 +322,52 @@ import data from "../data/catalog.json";
       }, 300);
     };
 
+    const closeModal = () => {
+      if (history.state?.productModal) {
+        history.back();
+        return;
+      }
+
+      if (window.location.hash.startsWith("#producto-")) {
+        const url = new URL(window.location.href);
+        url.hash = "";
+        history.replaceState(history.state, "", url);
+      }
+      hideModal();
+    };
+
+    cards.forEach((card) => {
+      card.addEventListener("click", () => {
+        const product = productsByUrl.get(card.dataset.productUrl ?? "");
+        if (product) openProduct(product, true);
+      });
+    });
+
     if (btnClose) btnClose.addEventListener("click", closeModal);
     if (backdrop) backdrop.addEventListener("click", closeModal);
+    window.addEventListener("popstate", () => {
+      const product = productsByUrl.get(window.location.hash);
+      if (product) {
+        openProduct(product);
+      } else {
+        hideModal();
+      }
+    });
+
+    copyLinkButton?.addEventListener("click", async () => {
+      const product = productsByUrl.get(window.location.hash);
+      if (!product || !copyStatus) return;
+
+      try {
+        await navigator.clipboard.writeText(getProductUrl(product).href);
+        copyStatus.textContent = "Enlace del producto copiado.";
+      } catch {
+        copyStatus.textContent =
+          "No se pudo copiar el enlace. Copia la URL desde la barra del navegador.";
+      }
+    });
+
+    const initialProduct = productsByUrl.get(window.location.hash);
+    if (initialProduct) openProduct(initialProduct);
   });
 </script>

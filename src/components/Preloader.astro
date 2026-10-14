@@ -1,5 +1,4 @@
 ---
-// src/components/Preloader.astro
 ---
 
 <div
@@ -11,7 +10,6 @@
   >
   </div>
 
-  <!-- SVG Mosaico de BiT -->
   <svg
     id="bit-logo-svg"
     viewBox="0 0 483 517"
@@ -26,7 +24,6 @@
     </defs>
 
     <g stroke="url(#bit-gradient)" stroke-width="1.5" fill="transparent">
-      <!-- Letras (Oscuros pasados a Blanco) -->
       <path
         class="bit-path"
         data-fill="#FFFFFF"
@@ -43,7 +40,6 @@
         d="M0 0 C4 2.91 8.01 7.44 9.27 12.26 C10.04 18.07 9.34 22.04 6.75 27.28 C6.32 28.18 5.89 29.09 5.44 30.03 C2.54 33.9 -0.24 35.89 -5.06 36.82 C-11.85 37.55 -17.08 37.36 -23.25 34.28 C-23.25 33.62 -23.25 32.96 -23.25 32.28 C-23.86 32.02 -24.47 31.76 -25.11 31.5 C-28.77 29.41 -29.96 26.18 -31.25 22.28 C-32.4 15.69 -31.2 10.82 -27.67 5.19 C-20.96 -3.8 -9.56 -5.43 0 0 Z"
         transform="translate(361.24,134.72)"></path>
 
-      <!-- Cyan/Azul Claro -->
       <path
         class="bit-path"
         data-fill="#00BEFD"
@@ -217,10 +213,8 @@
     </g>
   </svg>
 
-  <!-- BLE Radar Spinner -->
   <div class="mt-8 flex flex-col items-center z-10">
     <div class="relative flex items-center justify-center w-12 h-12 mb-4">
-      <!-- Ondas expansivas simulando señal BLE -->
       <div
         class="absolute inset-0 border-[1.5px] border-brand-500/60 rounded-full animate-ping"
         style="animation-duration: 1.5s;"
@@ -231,7 +225,6 @@
         style="animation-duration: 1.5s; animation-delay: 0.4s;"
       >
       </div>
-      <!-- Núcleo del beacon -->
       <div
         class="w-2.5 h-2.5 bg-white rounded-full shadow-[0_0_8px_#00BEFD] animate-pulse"
       >
@@ -254,10 +247,16 @@
   import gsap from "gsap";
 
   window.addEventListener("DOMContentLoaded", () => {
+    const preloader = document.getElementById("bit-preloader");
+    // Si venimos de una navegación interna, retiramos la pantalla antes de arrancar GSAP.
+    if (document.documentElement.classList.contains("skip-home-preloader")) {
+      preloader?.remove();
+      return;
+    }
+
     const paths = document.querySelectorAll(
       ".bit-path",
     ) as NodeListOf<SVGPathElement>;
-    const preloader = document.getElementById("bit-preloader");
     const svgLogo = document.getElementById("bit-logo-svg");
 
     if (!paths.length || !preloader || !svgLogo) return;
@@ -270,7 +269,7 @@
 
     const tl = gsap.timeline();
 
-    // 1. Trazado láser exacto del logo
+    // El logo se dibuja, toma color y se retira en una sola secuencia.
     tl.to(
       paths,
       {
@@ -281,7 +280,6 @@
       "start",
     );
 
-    // 2. Relleno con colores originales
     tl.to(
       paths,
       {
@@ -293,7 +291,6 @@
       "-=0.5",
     );
 
-    // 3. Zoom y transición de salida
     tl.to(
       svgLogo,
       {

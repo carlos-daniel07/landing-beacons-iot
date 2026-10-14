@@ -1,14 +1,10 @@
 import { lazy, Suspense, useEffect, useState } from "react";
 
-// El Canvas 3D completo (Three.js + GSAP + drei) solo se descarga si el
-// visitante es desktop — este import() dinámico hace que el bundler
-// (Vite/Astro) lo separe en su propio chunk, así los celulares nunca
-// bajan ese peso.
+// El Canvas 3D se carga solo en pantallas grandes; en celular no bajamos Three.js.
 const SceneCanvas = lazy(() => import("./Scenecanvas"));
 
 function useIsDesktop(breakpointPx = 1024) {
-  // null = "todavía no sabemos" (evita parpadeos/asunciones incorrectas
-  // en el primer render, antes de que el navegador nos diga el ancho real)
+  // Esperamos a conocer el ancho real para no mostrar un fallback equivocado al cargar.
   const [isDesktop, setIsDesktop] = useState<boolean | null>(null);
 
   useEffect(() => {
@@ -22,8 +18,7 @@ function useIsDesktop(breakpointPx = 1024) {
   return isDesktop;
 }
 
-// Fallback liviano para mobile/tablet chico: mismo logo con un pulso CSS,
-// sin WebGL ni Three.js. Mantiene la identidad visual del beacon.
+// En pantallas pequeñas mostramos el beacon con CSS, sin levantar WebGL.
 function MobileFallback() {
   return (
     <div className="w-full h-dvh relative z-0 bg-slate-50 overflow-hidden flex items-center justify-center">

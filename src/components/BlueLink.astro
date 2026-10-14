@@ -1,5 +1,4 @@
 ---
-// src/components/BlueLink.astro (o el nombre de tu archivo)
 ---
 
 <section id="enlace-azul-section" class="relative z-20 h-[200vh] w-full">
@@ -7,8 +6,10 @@
     <div
       class="mx-auto flex w-full max-w-7xl flex-col items-start gap-6 px-6 pb-24 sm:px-10 lg:flex-row lg:items-center lg:justify-between lg:gap-16 lg:px-16 lg:pb-0"
     >
-      <!-- Textos -->
-      <div class="pointer-events-auto z-20 w-full max-w-md">
+      <div
+        id="solutions-navigation-target"
+        class="pointer-events-auto z-20 w-full max-w-md"
+      >
         <span
           class="mb-3 block font-mono text-[10px] uppercase tracking-[0.2em] text-brand-700 md:text-xs"
         >
@@ -29,14 +30,12 @@
         </p>
       </div>
 
-      <!-- Wrapper que reserva el tamaño ya escalado -->
       <div
         class="relative h-[350px] w-[245px] shrink-0 self-center lg:h-[500px] lg:w-[350px] lg:self-auto"
       >
         <div
           class="absolute left-0 top-0 flex h-[500px] w-[350px] origin-top-left scale-[0.7] flex-col justify-between overflow-hidden rounded-3xl border border-slate-200 bg-white p-6 shadow-[0_20px_50px_rgba(15,23,42,0.07)] lg:scale-100"
         >
-          <!-- NUBE Y DASHBOARD -->
           <div
             id="ea-cloud"
             class="w-full bg-slate-50 border border-slate-100 rounded-xl p-4 z-10 shadow-sm"
@@ -58,7 +57,6 @@
               </div>
             </div>
 
-            <!-- Feed de Telemetría -->
             <div
               class="bg-white rounded-lg p-3 border border-slate-100 font-mono text-[10px] space-y-2 shadow-sm"
             >
@@ -88,7 +86,6 @@
             </div>
           </div>
 
-          <!-- LÍNEA DE SEÑAL 2 -->
           <div
             class="absolute left-1/2 top-[120px] bottom-[200px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
           >
@@ -99,7 +96,6 @@
             </div>
           </div>
 
-          <!-- GATEWAY KG01 -->
           <div
             class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 z-10"
           >
@@ -115,7 +111,6 @@
             >
           </div>
 
-          <!-- LÍNEA DE SEÑAL 1 -->
           <div
             class="absolute left-1/2 bottom-[80px] top-[250px] w-[2px] bg-slate-100 -translate-x-1/2 overflow-hidden"
           >
@@ -126,7 +121,6 @@
             </div>
           </div>
 
-          <!-- ZONA DE TRÁNSITO Y ACTIVO -->
           <div
             class="w-full h-16 border-t border-dashed border-slate-300 mt-auto relative flex items-center"
           >

@@ -1,5 +1,4 @@
 ---
-// src/components/ProductModal.astro
 ---
 
 <div
@@ -29,7 +28,6 @@
       >
     </button>
 
-    <!-- SECCIÓN SUPERIOR -->
     <div class="flex flex-col md:flex-row w-full shrink-0">
       <div
         class="w-full md:w-1/2 bg-slate-50 flex items-center justify-center p-8 md:p-12 min-h-60 md:min-h-75 border-b md:border-b-0 md:border-r border-slate-100"
@@ -93,6 +91,7 @@
 
         <div class="flex flex-col gap-3 sm:flex-row">
           <a
+            id="m-whatsapp-link"
             href="https://wa.me/573146148505"
             target="_blank"
             rel="noreferrer"
@@ -101,15 +100,21 @@
             Consultar por WhatsApp
           </a>
           <button
+            id="m-copy-link-btn"
+            type="button"
             class="flex-1 text-center bg-white border border-brand-700 hover:bg-brand-50 text-brand-700 font-medium py-3 px-6 rounded-full transition-colors"
           >
             Copiar enlace
           </button>
         </div>
+        <span
+          id="m-copy-status"
+          class="mt-2 block text-xs text-slate-500"
+          role="status"
+          aria-live="polite"></span>
       </div>
     </div>
 
-    <!-- SECCIÓN INFERIOR: Relacionados -->
     <div
       id="m-related-section"
       class="w-full bg-[#f8fafc] border-t border-slate-100 p-6 md:p-12 shrink-0 hidden"

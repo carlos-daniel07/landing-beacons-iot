@@ -1,0 +1,285 @@
+---
+import multimedia from "../data/multimedia.json";
+
+const focusAreas = [
+  {
+    number: "01",
+    title: "Localización en tiempo real",
+    description:
+      "Diseñamos soluciones RTLS para conocer dónde están los activos y cómo se mueven dentro de cada espacio.",
+  },
+  {
+    number: "02",
+    title: "Trazabilidad de activos",
+    description:
+      "Conectamos beacons, sensores y gateways para facilitar el seguimiento y la gestión de activos.",
+  },
+  {
+    number: "03",
+    title: "Experiencias de proximidad",
+    description:
+      "Creamos experiencias y navegación en interiores con tecnología Bluetooth Low Energy.",
+  },
+];
+
+const clientSectors = [
+  "Industria y logística",
+  "Salud y espacios institucionales",
+  "Comercio y espacios de atención",
+];
+---
+
+<!-- Los videos se administran desde multimedia.json sin tocar esta sección. -->
+<main class="relative isolate overflow-hidden">
+  <div
+    aria-hidden="true"
+    class="pointer-events-none absolute inset-x-0 top-0 -z-10 h-168 bg-linear-to-b from-brand-50 via-slate-50 to-transparent"
+  >
+  </div>
+
+  <section class="px-6 pb-16 pt-32 sm:px-10 sm:pb-20 md:pt-40 lg:px-16">
+    <div class="mx-auto max-w-7xl">
+      <a
+        id="back-to-home"
+        href="/"
+        class="mb-10 inline-flex items-center gap-2 rounded-full border border-slate-200 bg-white/80 px-4 py-2 text-sm font-semibold text-slate-600 shadow-sm transition hover:border-brand-300 hover:text-brand-800"
+      >
+        <svg
+          aria-hidden="true"
+          class="h-4 w-4"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            d="m15 18-6-6 6-6M9 12h12"></path></svg
+        >
+        Volver al inicio
+      </a>
+
+      <div
+        class="grid gap-10 lg:grid-cols-[1.15fr_0.85fr] lg:items-end lg:gap-16"
+      >
+        <div>
+          <span
+            class="mb-4 block text-xs font-bold uppercase tracking-[0.2em] text-brand-800"
+          >
+            Conectamos espacios con inteligencia
+          </span>
+          <h1
+            class="max-w-4xl text-4xl font-medium leading-[1.05] tracking-tight text-ink text-balance sm:text-5xl lg:text-7xl"
+          >
+            Tecnología para entender mejor cada espacio.
+          </h1>
+        </div>
+        <div class="max-w-xl lg:justify-self-end">
+          <p class="text-lg leading-relaxed text-slate-600">
+            Somos Beacons IoT Technologies, un equipo colombiano que crea
+            soluciones de localización en tiempo real, trazabilidad y
+            automatización. Integramos hardware y software IoT para ayudar a las
+            organizaciones a conectar sus activos, operaciones y personas con
+            información útil.
+          </p>
+          <p class="mt-4 text-base leading-relaxed text-slate-500">
+            Desde Medellín, acercamos tecnologías como Bluetooth Low Energy a
+            retos reales en interiores, donde cada dato puede ayudar a tomar
+            mejores decisiones.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section
+    aria-labelledby="videos-title"
+    class="bg-white py-16 sm:py-20 lg:py-24"
+  >
+    <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+      <div
+        class="mb-9 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-end sm:justify-between"
+      >
+        <div>
+          <span
+            class="mb-3 block text-xs font-bold uppercase tracking-[0.18em] text-brand-800"
+          >
+            En movimiento
+          </span>
+          <h2
+            id="videos-title"
+            class="text-3xl font-medium tracking-tight text-ink sm:text-4xl lg:text-5xl"
+          >
+            Así se ve la tecnología en acción.
+          </h2>
+        </div>
+      </div>
+
+      <div class="grid gap-5 md:grid-cols-2 xl:grid-cols-3">
+        {
+          multimedia.videos.map((video) => (
+            <article class="group overflow-hidden rounded-3xl border border-slate-200 bg-slate-950 shadow-sm">
+              <div class="aspect-video overflow-hidden">
+                <video
+                  class="h-full w-full object-cover transition duration-500 group-hover:scale-[1.03]"
+                  src={video.url}
+                  autoplay
+                  muted
+                  loop
+                  playsinline
+                  preload="metadata"
+                  aria-label={video.titulo}
+                />
+              </div>
+              <div class="p-5">
+                <span class="text-[10px] font-bold uppercase tracking-[0.18em] text-brand-500">
+                  {video.categoria}
+                </span>
+                <h3 class="mt-2 text-lg font-semibold text-white">
+                  {video.titulo}
+                </h3>
+              </div>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+    <div class="mx-auto grid max-w-7xl gap-5 md:grid-cols-2">
+      <article
+        class="relative overflow-hidden rounded-3xl bg-ink p-7 text-white sm:p-10 lg:p-12"
+      >
+        <span
+          class="mb-8 block text-xs font-bold uppercase tracking-[0.18em] text-brand-300"
+          >01 · Nuestra misión</span
+        >
+        <p class="max-w-xl leading-relaxed text-slate-300">
+          Somos una empresa de base tecnológica ubicada en Medellín. Combinamos
+          hardware, software y analítica para diseñar soluciones IoT escalables
+          en sectores como salud, industria, logística y agricultura.
+        </p>
+        <div
+          aria-hidden="true"
+          class="absolute -bottom-16 -right-12 h-48 w-48 rounded-full border border-brand-500/20"
+        >
+        </div>
+      </article>
+
+      <article
+        class="rounded-3xl border border-slate-200 bg-white p-7 shadow-sm sm:p-10 lg:p-12"
+      >
+        <span
+          class="mb-8 block text-xs font-bold uppercase tracking-[0.18em] text-brand-800"
+          >02 · Nuestra visión</span
+        >
+        <p class="max-w-xl leading-relaxed text-slate-600">
+          Implementamos sistemas de localización en tiempo real (RTLS) con
+          beacons BLE, sensores y gateways IoT para ubicar equipos, controlar
+          inventarios, monitorear condiciones ambientales y mejorar la
+          eficiencia operativa.
+        </p>
+      </article>
+    </div>
+  </section>
+
+  <section class="bg-white py-16 sm:py-20 lg:py-24">
+    <div class="mx-auto max-w-7xl px-6 sm:px-10 lg:px-16">
+      <div class="mb-10 max-w-3xl">
+        <span
+          class="mb-3 block text-xs font-bold uppercase tracking-[0.18em] text-brand-800"
+          >Lo que hacemos</span
+        >
+        <h2
+          class="text-3xl font-medium tracking-tight text-ink sm:text-4xl lg:text-5xl"
+        >
+          De una necesidad operativa a una solución conectada.
+        </h2>
+      </div>
+      <div class="grid gap-4 md:grid-cols-3">
+        {
+          focusAreas.map((area) => (
+            <article class="rounded-2xl border border-slate-200 bg-slate-50 p-6 transition hover:-translate-y-1 hover:border-brand-300 hover:shadow-lg">
+              <span class="font-mono text-xs font-bold text-brand-800">
+                {area.number}
+              </span>
+              <h3 class="mb-2 mt-5 text-xl font-semibold text-ink">
+                {area.title}
+              </h3>
+              <p class="text-sm leading-relaxed text-slate-500">
+                {area.description}
+              </p>
+            </article>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+
+  <section class="px-6 py-16 sm:px-10 sm:py-20 lg:px-16 lg:py-24">
+    <div class="mx-auto grid max-w-7xl gap-12 lg:grid-cols-2 lg:gap-16">
+      <div>
+        <span
+          class="mb-3 block text-xs font-bold uppercase tracking-[0.18em] text-brand-800"
+          >A quién acompañamos</span
+        >
+        <h2
+          class="mb-4 text-3xl font-medium tracking-tight text-ink sm:text-4xl"
+        >
+          Tecnología para distintos entornos.
+        </h2>
+        <p class="mb-7 max-w-xl leading-relaxed text-slate-500">
+          Adaptamos cada implementación al espacio, los activos y los objetivos
+          de cada organización.
+        </p>
+        <ul class="space-y-3">
+          {
+            clientSectors.map((sector) => (
+              <li class="flex items-center gap-3 rounded-xl border border-slate-200 bg-white p-4 text-sm font-semibold text-slate-700">
+                <span class="h-2 w-2 rounded-full bg-brand-500" />
+                {sector}
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+
+      <div>
+        <span
+          class="mb-3 block text-xs font-bold uppercase tracking-[0.18em] text-brand-800"
+          >Socios tecnológicos</span
+        >
+        <h2
+          class="mb-4 text-3xl font-medium tracking-tight text-ink sm:text-4xl"
+        >
+          Tecnología especializada para nuestras soluciones.
+        </h2>
+        <p class="mb-7 max-w-xl leading-relaxed text-slate-500">
+          Dispositivos Bluetooth Low Energy (BLE), integrados en soluciones de
+          localización, trazabilidad y monitoreo.
+        </p>
+        <article
+          class="grid overflow-hidden rounded-2xl border border-slate-200 bg-white sm:grid-cols-[150px_1fr]"
+        >
+          <div
+            class="flex min-h-32 items-center justify-center border-b border-slate-200 bg-white p-6 sm:border-b-0 sm:border-r"
+          >
+            <span
+              aria-label="KKM"
+              class="font-sans text-4xl font-black italic tracking-[-0.12em] text-[#2460a9]"
+              >KKM</span
+            >
+          </div>
+          <div class="flex flex-col justify-center p-6 sm:p-8">
+            <h3 class="mb-2 text-lg font-medium text-ink">KKM</h3>
+            <p class="text-sm leading-relaxed text-slate-500 sm:text-base">
+              Tecnología especializada en dispositivos Bluetooth Low Energy
+              (BLE), para soluciones de localización, trazabilidad y monitoreo.
+            </p>
+          </div>
+        </article>
+      </div>
+    </div>
+  </section>
+</main>

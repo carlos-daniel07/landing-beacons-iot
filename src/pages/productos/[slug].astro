@@ -1,0 +1,100 @@
+---
+import { getProductHash, getProductPath, productos } from "../../lib/products";
+
+export function getStaticPaths() {
+  return productos.map((producto) => ({
+    params: { slug: producto.slug },
+    props: { producto },
+  }));
+}
+
+const { producto } = Astro.props;
+const siteUrl = Astro.site ?? new URL("https://beaconsiottechnologies.com");
+const productUrl = new URL(getProductPath(producto.slug), siteUrl).href;
+const description = `${producto.nombre} (${producto.referencia}). ${producto.tipo} KKM con alcance de ${producto.alcance} y batería ${producto.bateria}.`;
+const whatsappMessage = `Hola, quisiera recibir información sobre ${producto.nombre} (referencia ${producto.referencia}). Lo vi aquí: ${productUrl}`;
+const whatsappUrl = `https://wa.me/573146148505?text=${encodeURIComponent(whatsappMessage)}`;
+const catalogUrl = `/${getProductHash(producto.slug)}`;
+---
+
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content={description} />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="canonical" href={productUrl} />
+    <meta property="og:type" content="product" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:site_name" content="Beacons IoT Technologies" />
+    <meta property="og:title" content={`${producto.nombre} | ${producto.referencia} · Beacons IoT`} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={productUrl} />
+    <meta property="og:image" content={producto.url_imagen} />
+    <meta property="og:image:alt" content={producto.nombre} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={`${producto.nombre} | ${producto.referencia}`} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={producto.url_imagen} />
+    <title>{producto.nombre} | {producto.referencia} · Beacons IoT</title>
+  </head>
+  <body class="m-0 min-h-screen bg-slate-50 text-slate-900">
+    <main class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-5 py-10 sm:px-8">
+      <a href={catalogUrl} class="mb-6 text-sm font-semibold text-brand-700 hover:underline">
+        ← Ver en el catálogo
+      </a>
+
+      <article class="grid overflow-hidden rounded-3xl border border-slate-200 bg-white shadow-xl md:grid-cols-2">
+        <div class="flex min-h-72 items-center justify-center bg-slate-50 p-8 sm:p-12">
+          <img
+            src={producto.url_imagen}
+            alt={producto.nombre}
+            class="max-h-96 w-full object-contain"
+          />
+        </div>
+
+        <div class="flex flex-col p-6 sm:p-9">
+          <span class="mb-4 w-fit rounded-md bg-slate-900 px-3 py-1.5 text-[10px] font-bold uppercase tracking-widest text-white">
+            {producto.tipo}
+          </span>
+          <h1 class="text-3xl font-semibold leading-tight tracking-tight text-slate-900">
+            {producto.nombre}
+          </h1>
+          <p class="mb-7 mt-2 font-mono text-sm text-slate-500">
+            KKM · Referencia {producto.referencia}
+          </p>
+
+          <dl class="mb-7 grid grid-cols-2 gap-3">
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <dt class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Alcance</dt>
+              <dd class="mt-1 text-sm font-bold text-slate-900">{producto.alcance}</dd>
+            </div>
+            <div class="rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <dt class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Batería</dt>
+              <dd class="mt-1 text-sm font-bold text-slate-900">{producto.bateria}</dd>
+            </div>
+            <div class="col-span-2 rounded-xl border border-slate-100 bg-slate-50 p-4">
+              <dt class="text-[10px] font-bold uppercase tracking-widest text-slate-400">Dimensiones</dt>
+              <dd class="mt-1 text-sm font-bold text-slate-900">{producto.dimensiones}</dd>
+            </div>
+          </dl>
+
+          <h2 class="mb-3 text-sm font-semibold text-slate-900">Características principales</h2>
+          <ul class="mb-8 space-y-2 text-sm text-slate-600">
+            {producto.capacidades.map((capacidad) => <li>• {capacidad}</li>)}
+          </ul>
+
+          <a
+            href={whatsappUrl}
+            target="_blank"
+            rel="noreferrer"
+            class="mt-auto rounded-full bg-brand-500 px-6 py-3 text-center font-semibold text-slate-900 transition-colors hover:bg-brand-400"
+          >
+            Consultar este producto por WhatsApp
+          </a>
+        </div>
+      </article>
+    </main>
+  </body>
+</html>

@@ -1,10 +1,13 @@
 @import "tailwindcss";
 
-/* Opcional: asegurarnos de que el body no tenga márgenes raros */
 body {
   margin: 0;
   padding: 0;
   overflow-x: hidden;
+}
+
+html.skip-home-preloader #bit-preloader {
+  display: none;
 }
 
 @keyframes fadeIn {
@@ -20,7 +23,6 @@ body {
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5rem;
 }
 
 @media (prefers-reduced-motion: reduce) {

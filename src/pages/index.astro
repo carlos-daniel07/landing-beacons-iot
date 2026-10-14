@@ -19,6 +19,39 @@ import ProductModal from "../components/ProductModal.astro";
       content="width=device-width, initial-scale=1, viewport-fit=cover"
     />
     <title>Beacons IoT Technologies</title>
+    <script is:inline>
+      try {
+        // Esta marca solo dura una navegación; las visitas normales conservan el preloader.
+        if (sessionStorage.getItem("skip-home-preloader") === "true") {
+          sessionStorage.removeItem("skip-home-preloader");
+          document.documentElement.classList.add("skip-home-preloader");
+        }
+      } catch (error) {
+        console.error("No se pudo recuperar el estado del preloader.", error);
+      }
+    </script>
+    <script is:inline>
+      // Esperamos a que cargue el contenido para que el enlace aterrice en la sección correcta.
+      const scrollToNavigationTarget = () => {
+        const id = decodeURIComponent(window.location.hash.slice(1));
+        const target = document.getElementById(id);
+        if (!target) return;
+
+        requestAnimationFrame(() => {
+          const targetTop = target.getBoundingClientRect().top + window.scrollY;
+          const headerOffset = window.innerWidth >= 768 ? 58 : 16;
+
+          window.scrollTo({
+            top: Math.max(0, targetTop - headerOffset),
+            behavior: "smooth",
+          });
+        });
+      };
+
+      window.addEventListener("hashchange", scrollToNavigationTarget);
+      window.addEventListener("pageshow", scrollToNavigationTarget);
+      window.addEventListener("site:navigate", scrollToNavigationTarget);
+    </script>
   </head>
 
   <body

@@ -4,7 +4,6 @@ import {
   RoundedBox,
   Image,
   Environment,
-  ContactShadows,
 } from "@react-three/drei";
 import * as THREE from "three";
 import gsap from "gsap";
@@ -14,7 +13,6 @@ gsap.registerPlugin(ScrollTrigger);
 
 type SignalState = { active: boolean; target: THREE.Vector3 };
 
-// 1. Red de Datos (Fondo)
 function TechNetwork() {
   const meshRef = useRef<THREE.Mesh>(null);
   useFrame((state) => {
@@ -37,7 +35,6 @@ function TechNetwork() {
   );
 }
 
-// 2. Efecto LED (El Radar del Beacon)
 function BlinkingLED({ position }: { position: [number, number, number] }) {
   const ringRef = useRef<THREE.Mesh>(null);
   useFrame((state) => {
@@ -62,8 +59,7 @@ function BlinkingLED({ position }: { position: [number, number, number] }) {
   );
 }
 
-// 3. El Beacon S8 Sólido — con movimiento propio (respiración + balanceo),
-// independiente del scroll, para que nunca se vea congelado.
+// El beacon flota suavemente por su cuenta, además del movimiento ligado al scroll.
 function BrandedBeacon() {
   const idleRef = useRef<THREE.Group>(null);
 
@@ -95,11 +91,6 @@ function BrandedBeacon() {
   );
 }
 
-// 3.5 Señal animada: un punto de luz que viaja del beacon hacia un
-// "target" (el dashboard en Enlace Azul, el celular en BeaconNAV).
-// No usa React state para el on/off (evita re-renders): lee un ref
-// mutable que las ScrollTrigger de ScrollAnimationManager actualizan.
-
 function SignalTrail({
   fromRef,
   signalRef,
@@ -109,8 +100,9 @@ function SignalTrail({
 }) {
   const dotRef = useRef<THREE.Mesh>(null);
   const glowRef = useRef<THREE.Mesh>(null);
+  // La señal lee este ref que actualiza GSAP, sin pedirle a React que renderice cada frame.
 
-  // Objetos reutilizables: se crean una sola vez, no en cada frame
+  // Reutilizamos estos objetos para no crear vectores nuevos en cada frame.
   const mid = useMemo(() => new THREE.Vector3(), []);
   const point = useMemo(() => new THREE.Vector3(), []);
   const curve = useMemo(
@@ -169,10 +161,6 @@ function SignalTrail({
   );
 }
 
-// 4. Cerebro GSAP: una fase por cada sección real de la página, más dos
-// ScrollTrigger simples que prenden/apagan la señal animada según en qué
-// sección esté el usuario. Necesita los ids "hero", "blue-link" y
-// "beacon-nav" que ya están en tu index.astro.
 function ScrollAnimationManager() {
   const beaconRef = useRef<THREE.Group>(null);
   const networkRef = useRef<THREE.Group>(null);
@@ -195,13 +183,11 @@ function ScrollAnimationManager() {
       return;
     }
 
-    // ESTADO INICIAL (Hero)
     beaconRef.current.position.set(1.5, 0.2, 0);
     beaconRef.current.rotation.set(0, -0.25, 0);
     beaconRef.current.scale.set(1, 1, 1);
 
     const ctx = gsap.context(() => {
-      // FASE 1: Hero → Enlace Azul.
       gsap
         .timeline({
           scrollTrigger: {
@@ -212,12 +198,10 @@ function ScrollAnimationManager() {
           },
         })
         .to(networkRef.current!.position, { y: -10 }, 0)
-        // Movido a la izquierda (x: -2.5) y un poco más abajo (y: 0)
         .to(beaconRef.current!.position, { x: 0.3, y: 0.6, z: 1.5 }, 0)
         .to(beaconRef.current!.rotation, { x: -0.1, y: 0.2, z: 0 }, 0)
         .to(beaconRef.current!.scale, { x: 0.4, y: 0.4, z: 0.4 }, 0);
 
-      // FASE 2: Enlace Azul → BeaconNAV.
       gsap
         .timeline({
           scrollTrigger: {
@@ -231,7 +215,6 @@ function ScrollAnimationManager() {
         .to(beaconRef.current!.scale, { x: 0.5, y: 0.5, z: 0.5 }, 0)
         .to(beaconRef.current!.rotation, { x: 0, y: 0.2, z: 0 }, 0);
 
-      // FASE 3: BeaconNAV → Hardware.
       gsap
         .timeline({
           scrollTrigger: {
@@ -244,9 +227,7 @@ function ScrollAnimationManager() {
         .to(beaconRef.current!.position, { y: -5 }, 0)
         .to(beaconRef.current!.scale, { x: 0.1, y: 0.1, z: 0.1 }, 0);
 
-      // SEÑAL 1: mientras el usuario está DENTRO de Enlace Azul, el beacon
-      // "dispara" hacia el dashboard. Ajusta este target (x,y,z) a dónde
-      // cae visualmente tu mockup del dashboard en la pantalla.
+      // El target se ajusta a mano para que la señal llegue al dashboard en la escena.
       ScrollTrigger.create({
         trigger: blueLinkEl,
         start: "top center",
@@ -263,8 +244,6 @@ function ScrollAnimationManager() {
         onLeaveBack: () => (signalRef.current.active = false),
       });
 
-      // SEÑAL 2: dentro de BeaconNAV, la señal ahora viaja hacia el
-      // celular. Mismo comentario: ajusta el target a tu mockup real.
       ScrollTrigger.create({
         trigger: beaconNavEl,
         start: "top center",
@@ -298,7 +277,6 @@ function ScrollAnimationManager() {
   );
 }
 
-// Controlador de Cámara Interactivo (Parallax + leve drift automático)
 function CameraRig() {
   useFrame((state) => {
     const t = state.clock.elapsedTime;
@@ -333,15 +311,6 @@ export default function SceneCanvas() {
         gl={{ alpha: true, powerPreference: "high-performance" }}
       >
         <Environment preset="city" />
-
-        {/* <ContactShadows
-          position={[0, -2, 0]}
-          opacity={0.3}
-          scale={15}
-          blur={2.5}
-          far={4}
-          color="#1e293b"
-        /> */}
 
         <CameraRig />
         <ScrollAnimationManager />

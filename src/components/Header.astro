@@ -1,23 +1,25 @@
 ---
-// src/components/Header.astro
+const sectionLink = (id: string) =>
+  Astro.url.pathname === "/" ? `#${id}` : `/#${id}`;
 ---
 
 <header
   id="main-header"
   class="fixed z-50 pointer-events-none transition-all duration-500 ease-out
-  bottom-[max(1.25rem,env(safe-area-inset-bottom))] inset-x-5 max-w-sm mx-auto /* Móvil: Píldora inferior separada de los bordes */
-  md:top-6 md:bottom-auto md:inset-x-0 md:max-w-5xl md:w-[95%] /* Escritorio (Inicial): Empieza a 24px del top */"
+  bottom-[max(1.25rem,env(safe-area-inset-bottom))] inset-x-5 max-w-sm mx-auto
+  md:top-6 md:bottom-auto md:inset-x-0 md:max-w-5xl md:w-[95%]"
 >
   <div
     id="header-container"
     class="pointer-events-auto flex justify-between items-center transition-all duration-500 ease-out
     bg-white/95 border border-slate-200/80 shadow-2xl
-    rounded-[4xl] px-5 py-3 /* Móvil */
-    md:bg-transparent md:border-transparent md:shadow-none md:px-0 /* Escritorio (Inicial) */"
+    rounded-[4xl] px-5 py-3
+    md:bg-transparent md:border-transparent md:shadow-none md:px-0"
   >
-    <div
-      class="hidden md:flex items-center gap-2 cursor-pointer transition-transform hover:scale-105 pl-4"
-      onclick="window.scrollTo({top: 0, behavior: 'smooth'})"
+    <a
+      href="/"
+      aria-label="Beacons IoT Technologies, inicio"
+      class="hidden md:flex items-center gap-2 transition-transform hover:scale-105 pl-4"
     >
       <img
         id="header-logo"
@@ -25,7 +27,7 @@
         alt="BiT Logo"
         class="h-8 w-auto drop-shadow-sm transition-all duration-500"
       />
-    </div>
+    </a>
 
     <nav
       id="desktop-nav"
@@ -33,13 +35,16 @@
       bg-white/95 px-8 py-2.5 rounded-full border border-slate-200/80 shadow-sm"
     >
       <a
-        href="#enlace-azul-section"
+        href={sectionLink("solutions-navigation-target")}
         class="hover:text-brand-700 transition-colors">Soluciones</a
       >
-      <a href="#hardware" class="hover:text-brand-700 transition-colors"
+      <a href={sectionLink("hardware-navigation-target")} class="hover:text-brand-700 transition-colors"
         >Hardware</a
       >
-      <a href="#contacto" class="hover:text-brand-700 transition-colors"
+      <a href="/nosotros/" class="hover:text-brand-700 transition-colors"
+        >Nosotros</a
+      >
+      <a href={sectionLink("contact-navigation-target")} class="hover:text-brand-700 transition-colors"
         >Contacto</a
       >
     </nav>
@@ -47,7 +52,7 @@
     <div class="hidden md:block pr-4">
       <a
         id="header-btn"
-        href="#contacto"
+        href={sectionLink("contact-navigation-target")}
         class="inline-block bg-ink hover:bg-brand-700 text-white text-xs font-bold uppercase tracking-wider px-6 py-2.5 rounded-full transition-all duration-500 shadow-md hover:shadow-lg hover:-translate-y-0.5"
       >
         Cotizar Kit
@@ -55,10 +60,10 @@
     </div>
 
     <nav
-      class="flex md:hidden w-full justify-between items-center text-[10px] font-bold text-slate-500 uppercase tracking-wide px-2"
+      class="flex md:hidden w-full justify-between items-center text-[9px] font-bold text-slate-500 uppercase tracking-wide px-1"
     >
       <a
-        href="#soluciones"
+        href={sectionLink("solutions-navigation-target")}
         class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
@@ -77,7 +82,7 @@
       </a>
 
       <a
-        href="#hardware"
+        href={sectionLink("hardware-navigation-target")}
         class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
@@ -96,7 +101,27 @@
       </a>
 
       <a
-        href="#contacto"
+        href="/nosotros/"
+        class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
+      >
+        <svg
+          class="w-5 h-5"
+          fill="none"
+          stroke="currentColor"
+          viewBox="0 0 24 24"
+          aria-hidden="true"
+          ><path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M16 18a4 4 0 0 0-8 0m12 3H4v-1a8 8 0 0 1 16 0v1ZM12 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8Z"
+          ></path></svg
+        >
+        <span>Nosotros</span>
+      </a>
+
+      <a
+        href={sectionLink("contact-navigation-target")}
         class="flex flex-col items-center gap-1.5 hover:text-brand-700 transition-colors"
       >
         <svg
@@ -115,7 +140,7 @@
       </a>
 
       <a
-        href="#contacto"
+        href={sectionLink("contact-navigation-target")}
         class="flex flex-col items-center gap-1.5 text-brand-700"
       >
         <svg
@@ -135,6 +160,59 @@
   </div>
 </header>
 
+<script is:inline>
+  // En el inicio hacemos el salto nosotros; desde otra página dejamos que cargue el hash normal.
+  document.addEventListener(
+    "click",
+    (event) => {
+      if (!(event.target instanceof Element)) return;
+      const link = event.target.closest("a[href]");
+      if (!(link instanceof HTMLAnchorElement)) return;
+      if (
+        event.defaultPrevented ||
+        event.button !== 0 ||
+        event.metaKey ||
+        event.ctrlKey ||
+        event.shiftKey ||
+        event.altKey ||
+        (link.target && link.target !== "_self")
+      ) {
+        return;
+      }
+
+      const destination = new URL(link.href, window.location.href);
+      if (
+        destination.origin === window.location.origin &&
+        destination.pathname === "/" &&
+        window.location.pathname === "/" &&
+        destination.hash
+      ) {
+        event.preventDefault();
+        if (destination.hash !== window.location.hash) {
+          window.history.pushState(null, "", destination);
+        }
+        window.dispatchEvent(new Event("site:navigate"));
+        return;
+      }
+
+      if (
+        destination.origin !== window.location.origin ||
+        destination.pathname !== "/" ||
+        window.location.pathname === "/"
+      ) {
+        return;
+      }
+
+      try {
+        window.sessionStorage.setItem("skip-home-preloader", "true");
+      } catch (error) {
+        console.error("No se pudo omitir el preloader al volver al inicio.", error);
+      }
+    },
+    true,
+  );
+</script>
+
 <script>
   document.addEventListener("DOMContentLoaded", () => {
     const mainHeader = document.getElementById("main-header");
@@ -143,7 +221,7 @@
     const headerLogo = document.getElementById("header-logo");
     const headerBtn = document.getElementById("header-btn");
 
-    // Recuerda el estado actual para no repetir el trabajo en cada evento de scroll
+    // Pilas: actualizamos el aspecto solo cuando el header cruza el umbral de scroll.
     let scrolled = false;
 
     const onScroll = () => {
@@ -154,11 +232,9 @@
       scrolled = shouldBeScrolled;
 
       if (scrolled) {
-        // 1. Posición: Sube pero se queda a 5px del borde
         mainHeader?.classList.remove("md:top-6");
         mainHeader?.classList.add("md:top-[5px]");
 
-        // 2. Contenedor: Se vuelve barra blanca, con padding muy fino (py-1.5)
         headerContainer?.classList.remove(
           "md:bg-transparent",
           "md:border-transparent",
@@ -174,7 +250,6 @@
           "md:rounded-full",
         );
 
-        // 3. Píldora de Nav: Se hace invisible para fundirse y reduce su padding
         desktopNav?.classList.remove(
           "bg-white/95",
           "border-slate-200/80",
@@ -188,14 +263,12 @@
           "py-1",
         );
 
-        // 4. Adelgazamiento: logo y botón más pequeños
         headerLogo?.classList.remove("h-8");
         headerLogo?.classList.add("h-6");
 
         headerBtn?.classList.remove("py-2.5", "px-6");
         headerBtn?.classList.add("py-2", "px-5", "text-[10px]");
       } else {
-        // RESET: Vuelve a su estado flotante separado
         mainHeader?.classList.add("md:top-6");
         mainHeader?.classList.remove("md:top-[5px]");
 
