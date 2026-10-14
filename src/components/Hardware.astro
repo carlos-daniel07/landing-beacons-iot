@@ -56,7 +56,6 @@ import { productos } from "../lib/products";
 <script>
   import {
     getProductHash,
-    getProductPath,
     type Producto,
   } from "../lib/products";
 
@@ -192,10 +191,6 @@ import { productos } from "../lib/products";
     const mRelatedGrid = document.getElementById("m-related-grid");
 
     const productsByUrl = new Map<string, Producto>();
-    const siteUrl =
-      document
-        .getElementById("products-grid")
-        ?.getAttribute("data-site-url") || window.location.origin;
     cards.forEach((card) => {
       const rawData = card.getAttribute("data-producto");
       const productUrl = card.dataset.productUrl;
@@ -205,7 +200,7 @@ import { productos } from "../lib/products";
     });
 
     const getProductUrl = (p: Producto) => {
-      return new URL(getProductPath(p.slug), siteUrl);
+      return new URL(getProductHash(p.slug), window.location.origin);
     };
 
     const populateModal = (p: Producto) => {

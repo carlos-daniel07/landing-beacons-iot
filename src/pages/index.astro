@@ -8,17 +8,89 @@ import Hardware from "../components/Hardware.astro";
 import Header from "../components/Header.astro";
 import Footer from "../components/Footer.astro";
 import ProductModal from "../components/ProductModal.astro";
+import SEOHead from "../components/SEOHead.astro";
+
+const siteUrl = Astro.site ?? new URL("https://beaconsiottechnologies.com");
+const homeUrl = new URL("/", siteUrl).href;
+const organizationId = `${homeUrl}#organization`;
+const homeTitle =
+  "Soluciones IoT y RTLS en Medellín, Colombia | Beacons IoT Technologies";
+const homeDescription =
+  "Soluciones IoT desde Medellín, Colombia: localización en tiempo real (RTLS), trazabilidad de activos y automatización con Bluetooth Low Energy, beacons y sensores.";
+const structuredData = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": organizationId,
+      name: "Beacons IoT Technologies",
+      url: homeUrl,
+      logo: new URL("/bit-rm.png", siteUrl).href,
+      image: new URL("/social-card.png", siteUrl).href,
+      description: homeDescription,
+      email: "ventas@beaconsiottechnologies.com",
+      telephone: "+57 314 614 8505",
+      areaServed: [
+        {
+          "@type": "City",
+          name: "Medellín",
+          containedInPlace: { "@type": "Country", name: "Colombia" },
+        },
+        { "@type": "Country", name: "Colombia" },
+      ],
+      knowsAbout: [
+        "Internet de las cosas (IoT)",
+        "Localización en tiempo real (RTLS)",
+        "Trazabilidad de activos",
+        "Bluetooth Low Energy (BLE)",
+        "Beacons y sensores IoT",
+        "Automatización",
+      ],
+      sameAs: [
+        "https://www.linkedin.com/company/beacons-iot-technologies",
+        "https://www.facebook.com/people/Beacons-Iot-Technologies/61562747319948/",
+        "https://www.instagram.com/beaconsiottechnologies/",
+      ],
+      contactPoint: {
+        "@type": "ContactPoint",
+        telephone: "+57 314 614 8505",
+        email: "ventas@beaconsiottechnologies.com",
+        contactType: "sales",
+        areaServed: "CO",
+        availableLanguage: ["Spanish"],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": `${homeUrl}#website`,
+      url: homeUrl,
+      name: "Beacons IoT Technologies",
+      inLanguage: "es-CO",
+      publisher: { "@id": organizationId },
+    },
+    {
+      "@type": "WebPage",
+      "@id": `${homeUrl}#webpage`,
+      url: homeUrl,
+      name: homeTitle,
+      description: homeDescription,
+      inLanguage: "es-CO",
+      isPartOf: { "@id": `${homeUrl}#website` },
+      about: { "@id": organizationId },
+    },
+  ],
+};
 ---
 
+<!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <meta
-      name="viewport"
-      content="width=device-width, initial-scale=1, viewport-fit=cover"
+    <SEOHead
+      title={homeTitle}
+      description={homeDescription}
+      canonicalPath="/"
+      structuredData={structuredData}
     />
-    <title>Beacons IoT Technologies</title>
     <script is:inline>
       try {
         // Esta marca solo dura una navegación; las visitas normales conservan el preloader.

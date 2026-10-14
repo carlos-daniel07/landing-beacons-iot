@@ -1,5 +1,6 @@
 ---
 import { getProductHash, getProductPath, productos } from "../../lib/products";
+import SEOHead from "../../components/SEOHead.astro";
 
 export function getStaticPaths() {
   return productos.map((producto) => ({
@@ -10,34 +11,43 @@ export function getStaticPaths() {
 
 const { producto } = Astro.props;
 const siteUrl = Astro.site ?? new URL("https://beaconsiottechnologies.com");
-const productUrl = new URL(getProductPath(producto.slug), siteUrl).href;
+const productPath = getProductPath(producto.slug);
+const productUrl = new URL(productPath, siteUrl).href;
+const title = `${producto.nombre} ${producto.referencia} | Beacons IoT`;
 const description = `${producto.nombre} (${producto.referencia}). ${producto.tipo} KKM con alcance de ${producto.alcance} y batería ${producto.bateria}.`;
 const whatsappMessage = `Hola, quisiera recibir información sobre ${producto.nombre} (referencia ${producto.referencia}). Lo vi aquí: ${productUrl}`;
 const whatsappUrl = `https://wa.me/573146148505?text=${encodeURIComponent(whatsappMessage)}`;
 const catalogUrl = `/${getProductHash(producto.slug)}`;
+const structuredData = {
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "@id": `${productUrl}#product`,
+  name: producto.nombre,
+  description,
+  image: producto.url_imagen,
+  sku: producto.referencia,
+  brand: { "@type": "Brand", name: "KKM" },
+  category: producto.tipo,
+  additionalProperty: [
+    { "@type": "PropertyValue", name: "Alcance", value: producto.alcance },
+    { "@type": "PropertyValue", name: "Batería", value: producto.bateria },
+    { "@type": "PropertyValue", name: "Dimensiones", value: producto.dimensiones },
+  ],
+};
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="description" content={description} />
-    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-    <link rel="canonical" href={productUrl} />
-    <meta property="og:type" content="product" />
-    <meta property="og:locale" content="es_CO" />
-    <meta property="og:site_name" content="Beacons IoT Technologies" />
-    <meta property="og:title" content={`${producto.nombre} | ${producto.referencia} · Beacons IoT`} />
-    <meta property="og:description" content={description} />
-    <meta property="og:url" content={productUrl} />
-    <meta property="og:image" content={producto.url_imagen} />
-    <meta property="og:image:alt" content={producto.nombre} />
-    <meta name="twitter:card" content="summary_large_image" />
-    <meta name="twitter:title" content={`${producto.nombre} | ${producto.referencia}`} />
-    <meta name="twitter:description" content={description} />
-    <meta name="twitter:image" content={producto.url_imagen} />
-    <title>{producto.nombre} | {producto.referencia} · Beacons IoT</title>
+    <SEOHead
+      title={title}
+      description={description}
+      canonicalPath={productPath}
+      image={producto.url_imagen}
+      imageAlt={`${producto.nombre}, referencia ${producto.referencia}`}
+      type="product"
+      structuredData={structuredData}
+    />
   </head>
   <body class="m-0 min-h-screen bg-slate-50 text-slate-900">
     <main class="mx-auto flex min-h-screen w-full max-w-5xl flex-col justify-center px-5 py-10 sm:px-8">
